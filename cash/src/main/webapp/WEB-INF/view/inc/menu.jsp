@@ -13,7 +13,7 @@
 			<a class="nav-link"  href="/admin/index">HOME</a>
 		</li>
 		<li class="nav-item col-3">
-			<a class="nav-link" href="/admin/cashbookByMonth">가계부</a>
+			<a class="nav-link" href="/admin/cashbookByMonth/-1/-1">가계부</a>
 		</li>
 		<li class="nav-item col-3">
 			<a class="nav-link" href="/admin/logout">LogOut</a>

@@ -10,7 +10,7 @@
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<h1>공지사항 수정</h1>
-	<form method="post" action="/admin/modifyNotice?noticeId=${notice.noticeId}">
+	<form method="post" action="/admin/modifyNotice/${notice.noticeId}">
 		<table border="1">
 			<tr>
 				<td>notice_id</td>

@@ -30,8 +30,8 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<a href="/admin/modifyNotice?noticeId=${noticeOne.noticeId}"><button>수정</button></a>
-				<a href="/admin/removeNotice?noticeId=${noticeOne.noticeId}"><button>삭제</button></a>
+				<a href="/admin/modifyNotice/${noticeOne.noticeId}"><button>수정</button></a>
+				<a href="/admin/removeNotice/${noticeOne.noticeId}"><button>삭제</button></a>
 			</td>
 		</tr>
 	</table>

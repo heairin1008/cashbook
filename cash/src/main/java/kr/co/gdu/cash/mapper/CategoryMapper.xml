@@ -6,7 +6,7 @@
 	<select id="selectCategoryList" resultType="kr.co.gdu.cash.vo.Category">
 		SELECT 
 			category_name categoryName,
-			category_info categoryInfo
+			cashbook_kind cashbookKind
 		FROM category
 	</select>
 </mapper>

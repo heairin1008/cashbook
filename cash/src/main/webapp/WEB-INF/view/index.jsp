@@ -22,7 +22,7 @@
 	<h1 style="padding-top:20px;" class="text-center">HOME</h1>
 	<div style="padding-left:330px;">
 		<span style="font-size:24px;" class="font-weight-bold">공지사항</span> 
-		<a class="btn btn-small btn-info" href="/admin/noticeList">more</a>
+		<a class="btn btn-small btn-info" href="/admin/noticeList/1">more</a>
 	</div>
 	<div>
 		<!-- 공지 -->

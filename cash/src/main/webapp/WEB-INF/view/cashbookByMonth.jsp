@@ -16,9 +16,9 @@
 	
 	<!-- 다이어리 -->	
 	<h3>
-		<a href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1}">[이전달]</a>
+		<a href="/admin/cashbookByMonth/${currentYear}/${currentMonth-1}">[이전달]</a>
 		${currentYear}년 ${currentMonth} 월
-		<a href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1}">[다음달]</a>
+		<a href="/admin/cashbookByMonth/${currentYear}/${currentMonth+1}">[다음달]</a>
 	</h3>
 		<div>
 		이번달 수입 합계 : ${sumIn}
@@ -47,7 +47,8 @@
 						</c:if>
 						<c:if test="${i-(firstDayOfWeek-1) >0 }">
 							<td>
-								<div><a href="/admin/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i-(firstDayOfWeek-1)}">${i-(firstDayOfWeek-1)}</a></div>
+								<!--  <div><a href="/admin/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i-(firstDayOfWeek-1)}">${i-(firstDayOfWeek-1)}</a></div>-->
+								<div><a href="/admin/cashbookByDay/now/${currentYear}/${currentMonth}/${i-(firstDayOfWeek-1)}">${i-(firstDayOfWeek-1)}</a></div>
 								<c:forEach var="c" items="${cashList}">
 									<c:if test="${i-(firstDayOfWeek-1) == c.dday}">
 										<div>
