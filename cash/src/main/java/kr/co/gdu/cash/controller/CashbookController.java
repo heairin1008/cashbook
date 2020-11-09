@@ -68,12 +68,11 @@ public class CashbookController {
 	@GetMapping("/admin/deleteCashbook/{cashbookId}/{currentYear}/{currentMonth}/{currentDay}")
 	public String deleteCashbook(
 							@PathVariable(name = "cashbookId") int cashbookId,
-							@PathVariable(name = "target") String target,
 							@PathVariable(name = "currentYear", required = true ) int currentYear,
 							@PathVariable(name = "currentMonth", required = true ) int currentMonth,
 							@PathVariable(name = "currentDay", required = true ) int currentDay) {
 		cashbookService.deleteCashbook(cashbookId);
-		return "redirect:/admin/cashbookByDay/{target}/{currentYear}/{currentMonth}/{currentDay}";
+		return "redirect:/admin/cashbookByMonth/-1/-1";
 	}
 	
 	// 일별 가계부 출력

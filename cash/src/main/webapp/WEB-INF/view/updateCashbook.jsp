@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>가계부 수정</h1>
-	<form method="post" action="/admin/updateCashbook">
+	<form method="post" action="/admin/updateCashbook/${cashbook.cashbookId}">
 	<table>
 		<tr>
 			<td>cashbook_id</td>
