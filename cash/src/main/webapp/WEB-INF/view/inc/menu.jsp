@@ -18,5 +18,8 @@
 		<li class="nav-item col-3">
 			<a class="nav-link" href="/admin/logout">LogOut</a>
 		</li>
+		<li class="nav-item col-3">
+			<a class="nav-link" href="http://localhost:8080/cashStats.html">cashapi</a>
+		</li>
 	</ul>
 </nav>
