@@ -8,15 +8,21 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style type="text/css">
 	.sunday {color: red}
+	table{
+		margin:auto;
+	}
+	td{
+		height:130px;
+		vertical-align:top;
+	}
 </style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
-	<h3>목록</h3>
-	
+	<div style="padding-bottom:50px;"></div>
 	<!-- 다이어리 -->	
-	<h3>
-		<a href="/admin/cashbookByMonth/${currentYear}/${currentMonth-1}">[이전달]</a>
+	<h3 class="text-center font-weight-bold">
+		<a class="text" href="/admin/cashbookByMonth/${currentYear}/${currentMonth-1}">[이전달]</a>
 		${currentYear}년 ${currentMonth} 월
 		<a href="/admin/cashbookByMonth/${currentYear}/${currentMonth+1}">[다음달]</a>
 	</h3>
@@ -27,9 +33,9 @@
 		이번달 지출 합계 : ${sumOut}
 	</div>
 	<div>
-		<table border="1" width="100%">
+		<table style="width:70%;" class="table table-bordered">
 			<thead>
-				<tr>
+				<tr class="text-center">
 					<th>일</th>
 					<th>월</th>
 					<th>화</th>
