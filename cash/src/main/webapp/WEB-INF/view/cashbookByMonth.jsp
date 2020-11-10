@@ -7,11 +7,27 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style type="text/css">
-	.sunday {color: red}
-	table{
+	#sunday {color: red;}
+	#saturday{color: blue;}
+	#table{
+		width:70%;
 		margin:auto;
 	}
+	#sumIn{
+		width:70%;
+		margin:auto;
+		color:red;
+		font-size:18px;
+	}
+	#sumOut{
+		width:70%;
+		margin:auto;
+		color:blue;
+		font-size:18px;
+	}
+	
 	td{
+		width:130px;
 		height:130px;
 		vertical-align:top;
 	}
@@ -26,23 +42,23 @@
 		${currentYear}년 ${currentMonth} 월
 		<a href="/admin/cashbookByMonth/${currentYear}/${currentMonth+1}">[다음달]</a>
 	</h3>
-		<div>
+	<div id="sumIn" class="font-weight-bold">
 		이번달 수입 합계 : ${sumIn}
-	</div>	
-	<div>
+	</div>
+	<div id="sumOut" class="font-weight-bold">
 		이번달 지출 합계 : ${sumOut}
 	</div>
 	<div>
-		<table style="width:70%;" class="table table-bordered">
+		<table id="table" class="table table-bordered font-weight-bold">
 			<thead>
 				<tr class="text-center">
-					<th>일</th>
+					<th id="sunday">일</th>
 					<th>월</th>
 					<th>화</th>
 					<th>수</th>
 					<th>목</th>
 					<th>금</th>
-					<th>토</th>
+					<th id="saturday">토</th>
 				</tr>
 			</thead>
 			<tbody>

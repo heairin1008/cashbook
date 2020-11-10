@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style>
 	#table{
-		width:60%;
+		width:50%;
 		margin:auto;
 	}
 	div{
@@ -20,7 +20,7 @@
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<h1 style="padding-top:20px;" class="text-center">HOME</h1>
-	<div style="padding-left:330px;">
+	<div id="table">
 		<span style="font-size:24px;" class="font-weight-bold">공지사항</span> 
 		<a class="btn btn-small btn-info" href="/admin/noticeList/1">more</a>
 	</div>
