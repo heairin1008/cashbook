@@ -43,16 +43,27 @@ public class CashbookService {
 		map.put("currentMonth", currentMonth);
 		return cashbookMapper.selectCashbookListByMonth(map);
 	}
-	
+	// cashbook 상세정보 출력
 	public Cashbook getCashbookById(int cashbookId) {
 		return cashbookMapper.selectCashbookById(cashbookId);
 	}
-	
+	// cashbook 상세정보 수정
 	public int updateCashbook(Cashbook cashbook) {
 		return cashbookMapper.updateCashbook(cashbook);
 	}
-	
+	// cashbook 상세정보 삭제
 	public int deleteCashbook(int cashbookId) {
 		return cashbookMapper.deleteCashbook(cashbookId);
+	}
+	// cashbook 리스트를 페이징으로 호출
+	public List<Cashbook> getCashbookListByPage(int currentPage, int rowPerPage){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("beginRow", (currentPage-1)*rowPerPage);
+		map.put("rowPerPage", rowPerPage);
+		return cashbookMapper.selectCashbookListByPage(map);
+	}
+	// cashbookList를 엑셀파일로
+	public List<Cashbook> getCashbookListAll(){
+		return cashbookMapper.selectCashbookListAll();
 	}
 }

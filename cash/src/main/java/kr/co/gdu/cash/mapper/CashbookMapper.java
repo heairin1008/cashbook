@@ -19,4 +19,8 @@ public interface CashbookMapper {
 	Cashbook selectCashbookById(int cashbookId);
 	int updateCashbook(Cashbook cashbook);
 	int deleteCashbook(int cashbookId);
+	// 인수(Map) : beginRow, rowPerPage
+	List<Cashbook> selectCashbookListByPage(Map<String, Object> map);
+	// 전체 cashbookList -> 엑셀파일
+	List<Cashbook> selectCashbookListAll();
 }
