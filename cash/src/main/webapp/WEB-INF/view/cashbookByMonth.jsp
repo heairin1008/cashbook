@@ -16,13 +16,13 @@
 	#sumIn{
 		width:70%;
 		margin:auto;
-		color:red;
+		color:blue;
 		font-size:18px;
 	}
 	#sumOut{
 		width:70%;
 		margin:auto;
-		color:blue;
+		color:red;
 		font-size:18px;
 	}
 	
@@ -38,9 +38,9 @@
 	<div style="padding-bottom:50px;"></div>
 	<!-- 다이어리 -->	
 	<h3 class="text-center font-weight-bold">
-		<a class="text" href="/admin/cashbookByMonth/${currentYear}/${currentMonth-1}">[이전달]</a>
+		<a class="text-info" href="/admin/cashbookByMonth/${currentYear}/${currentMonth-1}">[이전달]</a>
 		${currentYear}년 ${currentMonth} 월
-		<a href="/admin/cashbookByMonth/${currentYear}/${currentMonth+1}">[다음달]</a>
+		<a class="text-info" href="/admin/cashbookByMonth/${currentYear}/${currentMonth+1}">[다음달]</a>
 	</h3>
 	<div id="sumIn" class="font-weight-bold">
 		이번달 수입 합계 : ${sumIn}

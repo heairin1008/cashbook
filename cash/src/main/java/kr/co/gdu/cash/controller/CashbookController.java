@@ -26,6 +26,7 @@ public class CashbookController {
 	public String cashbookList(Model model,
 						@PathVariable(name="currentPage", required = true) int currentPage) {
 		int rowPerPage = 20;
+		
 		List<Cashbook> cashbookList = cashbookService.getCashbookListByPage(currentPage, rowPerPage);
 		model.addAttribute("cashbookList", cashbookList);
 		return "cashbookList";

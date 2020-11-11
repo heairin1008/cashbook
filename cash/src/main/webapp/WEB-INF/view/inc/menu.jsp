@@ -9,19 +9,25 @@
 		<li class="nav-item active">
 			<a class="navbar-brand" href="/admin/index">Cashbook</a>
 		</li>
-		<li class="nav-item col-3">
+		<li class="nav-item col-1">
 			<a class="nav-link"  href="/admin/index">HOME</a>
 		</li>
-		<li class="nav-item col-3">
+		<li class="nav-item col-2">
 			<a class="nav-link" href="/admin/cashbookByMonth/-1/-1">가계부</a>
 		</li>
-		<li class="nav-item col-3">
+		<li class="nav-item col-2">
 			<a class="nav-link" href="/admin/cashbookList/1">cashbookList</a>
 		</li>
-		<li class="nav-item col-3">
-			<a class="nav-link" href="/admin/cashStats.html">cashapi</a>
+		<li class="nav-item col-2">
+			<a class="nav-link" href="/admin/chart1.jsp">통계자료</a>
 		</li>
-		<li class="nav-item col-3">
+		<li class="nav-item col-2">
+			<a class="nav-link" href="/admin/noticeList/1">공지사항</a>
+		</li>
+		<li class="nav-item col-2">
+			<a class="nav-link" href="/admin/addMember">사용자 추가</a>
+		</li>
+		<li class="nav-item col-2">
 			<a class="nav-link" href="/admin/logout">LogOut</a>
 		</li>
 	</ul>

@@ -29,9 +29,9 @@ public class NoticeController {
 		int lastPage = 0;
 		
 		if((totalCount%rowPerPage) == 0) {
-			lastPage = totalCount%rowPerPage;
+			lastPage = totalCount/rowPerPage;
 		}else {
-			lastPage = (totalCount%rowPerPage)+1;
+			lastPage = (totalCount/rowPerPage)+1;
 		}
 		
 		model.addAttribute("currentPage", currentPage);
