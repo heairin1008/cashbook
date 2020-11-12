@@ -8,12 +8,20 @@
 <title>noticeList</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+	div{
+		padding-bottom:30px;
+	}
+</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
-	<h1>공지사항</h1>
-	<div><a href="/admin/addNotice"><button type="button">등록</button></a></div>
-	<table border="1">
+	<div class=" container jumbotron">
+		<span style="font-size:36px;" class="font-weight-bold">공지사항</span>
+	</div>
+	<div class="container">
+	
+	<table id="table" class="table table-striped text-center">
 		<thead>
 			<tr>
 				<th>notice_id</th>
@@ -31,7 +39,10 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<div>
+	<div id="table" style="text-align:right;">
+		<span style="padding-left:10px;"><a class="btn btn-small btn-success" href="/admin/addNotice">등록</a></span>
+	</div>
+	<div id="table" style="text-align:center;" class="font-weight-bold">
 		<c:if test="${currentPage > 1}">
 			<a href="/admin/noticeList/1">[처음]</a>
 			<a href="/admin/noticeList/${currentPage - 1}">[이전]</a>
@@ -44,5 +55,6 @@
 		</c:if>
 		
 	</div>
+</div>
 </body>
 </html>

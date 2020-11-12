@@ -9,14 +9,14 @@
 		<li class="nav-item active">
 			<a class="navbar-brand" href="/admin/index">Cashbook</a>
 		</li>
-		<li class="nav-item col-1">
+		<li class="nav-item col-2">
 			<a class="nav-link"  href="/admin/index">HOME</a>
 		</li>
 		<li class="nav-item col-2">
 			<a class="nav-link" href="/admin/cashbookByMonth/-1/-1">가계부</a>
 		</li>
 		<li class="nav-item col-2">
-			<a class="nav-link" href="/admin/cashbookList/1">cashbookList</a>
+			<a class="nav-link" href="/admin/cashbookList/1">cashbook</a>
 		</li>
 		<li class="nav-item col-2">
 			<a class="nav-link" href="/admin/chart1.jsp">통계자료</a>

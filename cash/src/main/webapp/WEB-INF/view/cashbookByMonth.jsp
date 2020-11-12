@@ -35,8 +35,11 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
-	<div style="padding-bottom:50px;"></div>
-	<!-- 다이어리 -->	
+	<div id="table" class="jumbotron">
+		<span style="font-size:36px;" class="font-weight-bold">가계부</span>
+	</div>
+	<div style="padding-bottom:10px;"></div>
+	<!-- 다이어리 -->
 	<h3 class="text-center font-weight-bold">
 		<a class="text-info" href="/admin/cashbookByMonth/${currentYear}/${currentMonth-1}">[이전달]</a>
 		${currentYear}년 ${currentMonth} 월

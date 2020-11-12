@@ -19,7 +19,9 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
-	<h1 style="padding-top:20px;" class="text-center">HOME</h1>
+	<div style="padding:20px 0px 20px 0px;" class="container jumbotron">
+		<h1 class="text-center">HOME</h1>
+	</div>
 	<div id="table">
 		<span style="font-size:24px;" class="font-weight-bold">공지사항</span> 
 		<a class="btn btn-small btn-info" href="/admin/noticeList/1">more</a>

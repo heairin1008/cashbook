@@ -82,7 +82,7 @@ public class CashbookController {
 							@PathVariable(name = "currentMonth", required = true ) int currentMonth,
 							@PathVariable(name = "currentDay", required = true ) int currentDay) {
 		cashbookService.deleteCashbook(cashbookId);
-		return "redirect:/admin/cashbookByMonth/-1/-1";
+		return "redirect:/admin/cashbookByDay/now/{currentYear}/{currentMonth}/{currentDay}";
 	}
 	
 	// 일별 가계부 출력
