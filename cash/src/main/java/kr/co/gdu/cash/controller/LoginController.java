@@ -20,7 +20,7 @@ public class LoginController {
 	@Autowired private NoticeService noticeService;
 	@Autowired private MemberService memberService;
 	
-	@GetMapping(value="/login")
+	@GetMapping(value={"/","/login"})
 	public String login(Model model, HttpSession session) { // 로그인 폼
 		if(session.getAttribute("loginId") != null) { // 이미 로그인한 상태일 경우 로그인 페이지로 들어가면 index페이지로 넘어가도록 설정
 			return "redirect:/admin/index";

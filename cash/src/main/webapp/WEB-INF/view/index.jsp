@@ -47,6 +47,9 @@
 			</tbody>
 		</table>
 	</div>
+	<div id="table">
+		<span style="font-size:24px;" class="font-weight-bold">최근 사용 내역</span>
+	</div>
 	<div>
 		<!-- 수입/지출/합계 -->
 		<table id="table" class="table table-bordered text-center">

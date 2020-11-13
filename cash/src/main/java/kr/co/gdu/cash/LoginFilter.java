@@ -21,6 +21,7 @@ public class LoginFilter implements Filter{
 		HttpSession session = ((HttpServletRequest)request).getSession();
 		if(session.getAttribute("loginId") == null) {
 			((HttpServletResponse)response).sendRedirect("/login");
+			return;
 		}
 		chain.doFilter(request, response);
 	}
