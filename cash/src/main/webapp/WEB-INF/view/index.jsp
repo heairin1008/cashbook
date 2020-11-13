@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style>
 	#table{
-		width:50%;
+		width:70%;
 		margin:auto;
 	}
 	div{
@@ -19,7 +19,7 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
-	<div style="padding:20px 0px 20px 0px;" class="container jumbotron">
+	<div id="table" style="padding:20px 0px 20px 0px;" class="jumbotron">
 		<h1 class="text-center">HOME</h1>
 	</div>
 	<div id="table">

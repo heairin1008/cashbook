@@ -37,7 +37,7 @@
 					<td>${c.categoryName}</td>
 					<td>${c.cashbookPrice}</td>
 					<td>${c.cashbookContent}</td>
-					<td><a href="/admin/updateCashbook/${c.cashbookId}">수정</a></td>
+					<td><a href="/admin/updateCashbook/${c.cashbookId}/${currentYear}/${currentMonth}/${currentDay}">수정</a></td>
 					<td><a href="/admin/deleteCashbook/${c.cashbookId}/${currentYear}/${currentMonth}/${currentDay}">삭제</a></td>
 				</tr>
 			</c:forEach>

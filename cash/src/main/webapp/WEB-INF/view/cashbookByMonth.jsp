@@ -35,7 +35,7 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
-	<div id="table" class="jumbotron">
+	<div id="table" style="padding:20px 0px 20px 0px; text-align:center;" class="jumbotron">
 		<span style="font-size:36px;" class="font-weight-bold">가계부</span>
 	</div>
 	<div style="padding-bottom:10px;"></div>
