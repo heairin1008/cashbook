@@ -15,7 +15,7 @@
 	<h1>chart1</h1>
 	<!-- table -->
 	<div>
-		<h3>년도별 수입 / 지출</h3>
+		<h3>연도별 수입 / 지출</h3>
 		<div>
 			<input type="text" id="year">
 			<button id="totalOutAndInByYearTable" type="button">table</button>
@@ -66,7 +66,7 @@ $('#totalOutAndInByYearTable').click(function(){
 			let html = `
 				<table border="1">
 					<tr>
-						<th>년도</th>
+						<th>연도</th>
 						<th>수입</th>
 						<th>지출</th>
 					</tr>
