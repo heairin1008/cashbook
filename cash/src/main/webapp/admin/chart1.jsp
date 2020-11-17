@@ -15,24 +15,18 @@
 	<h1>chart1</h1>
 	<!-- table -->
 	<div>
-		<table>
-			<tr>
-				<td></td>
-			</tr>
-		</table>
+		<h3>년도별 수입 / 지출</h3>
+		<div>
+			<input type="text" id="year">
+			<button id="totalOutAndInByYearTable" type="button">table</button>
+			<button id="totalOutAndInByYearChart" type="button">chart</button>
+		</div>
+		<div>
+			<span id="totalOfMonthByYearTableResult"></span>
+		</div>
 	</div>
 	<!-- chart -->
 	<div>
-		<div>
-			<select id="year" name="year">
-				<c:forEach var="c" items="${year}">
-					<option value="${c.year}">${c.year}</option>
-				</c:forEach>
-			</select>
-		</div>
-		<div>
-			<button id="totalOutAndInByYearChart" type="button"></button>
-		</div>
 		<div>
 			<canvas id="chart1"></canvas>
 		</div>
@@ -41,32 +35,49 @@
 <script>
 $('#totalOutAndInByYearChart').click(function(){
 	$.ajax({
-		url:'/totalOutAndInByYear',
+		url:'/totalOutAndInByYear/'+$('#year').val(),
 		type:'get',
 		success:function(data){
-			// 차트 구현 코드
-			var ctx = document.getElementById('chart1').getContext('2d');
-			var chart = new Chart(ctx, {
-				type:'bar', // chart 종류
+			console.log(data);
+			let pieCtx = $('#chart1');
+			let pieChart = new Chart(pieCtx, {
+				type:'pie',
 				data:{
-					labels:['수입','지출'], // x축, y축
+					labels:['수입', '지출'], // 항목들
 					datasets:[{
-						label:$('#year')+'년 수입 / 지출',
-						 backgroundColor: [
-				                'rgba(255, 99, 132, 0.2)',
-				                'rgba(54, 162, 235, 0.2)'
-				            ],
-				            borderColor: [
-				                'rgba(255, 99, 132, 1)',
-				                'rgba(54, 162, 235, 1)',
-				            ],
-				            // data속성의 배열값은 ajax 호출 후 결과값으로 채워야함.
-						data:[data.수입, data.지출],
-						borderWidth: 1
+						backgroundColor:['rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)'], // a는 투명도
+						borderColor:['rgba(255, 206, 86, 0.2)','rgba(75, 192, 192, 0.2)'],
+						data:[data.수입, data.지출] // 데이터
 					}]
-				}, // chart 안에 사용되는 모든 데이터
+				},
 				options:{}
 			});
+		}
+	});
+});
+
+$('#totalOutAndInByYearTable').click(function(){
+	// $('#totalOfMonthByYearTableResult').html('totalOfMonthByYearTableResult');
+	$.ajax({
+		url:'/totalOutAndInByYear/'+$('#year').val(),
+		type:'get',
+		success:function(data){
+			console.log(data);
+			let html = `
+				<table border="1">
+					<tr>
+						<th>년도</th>
+						<th>수입</th>
+						<th>지출</th>
+					</tr>
+					<tr>
+						<td>\${$('#year').val()}</td>
+						<td>\${data.수입}</td>
+						<td>\${data.지출}</td>
+					</tr>
+				</table>
+			`;
+			$('#totalOfMonthByYearTableResult').html(html);
 		}
 	});
 });

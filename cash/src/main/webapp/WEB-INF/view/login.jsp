@@ -21,7 +21,7 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
-	<div style="padding-bottom:20px;"></div>
+	<div style="margin-top:100px;"></div>
 	<h1 class="text-center">Login</h1>
 	<div id="login" class="form-group">
 	<form method="post" action="/login">
@@ -38,7 +38,7 @@
 		</table>
 	</form>
 	</div>
-	<div style="padding-bottom:10px;"></div>
+	<div style="margin-top:50px;"></div>
 	<h4 id="table" class="font-weight-bold">공지사항</h4>
 	<div>
 		<!-- 공지 -->

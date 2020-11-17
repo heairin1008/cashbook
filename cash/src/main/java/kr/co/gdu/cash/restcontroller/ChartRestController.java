@@ -15,14 +15,15 @@ import kr.co.gdu.cash.vo.Cashbook;
 public class ChartRestController {
 	@Autowired private ChartRestService chartRestService;
 	
-	@GetMapping("/totalOutAndInByYear")
-	public Map<String, Object> totalOutAndInByYear(@PathVariable(name="year") int year){
-		return chartRestService.selectTotalOutAndInByYear(year);
+	@GetMapping("/totalOfMonthByYear/{year}")
+	public Map<String, Object> totalOfMonthByYear(@PathVariable(name="year") int year){
+		return chartRestService.selectTotalOfMonthByYear(year); // @RestController 
 	}
 	
-	@GetMapping("/year")
-	public List<Cashbook> cashbookYear() {
-		List<Cashbook> year = chartRestService.selectCashbookYear();
-		return year;
+	@GetMapping("/totalOutAndInByYear/{year}")
+	public Map<String, Object> totalOutAndInByYear(
+			@PathVariable(name="year") int year){
+		System.out.println(year);
+		return chartRestService.getTotalOutAndInByYear(year);
 	}
 }

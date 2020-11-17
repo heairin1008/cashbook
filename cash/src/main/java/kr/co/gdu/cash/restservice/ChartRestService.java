@@ -14,11 +14,11 @@ import kr.co.gdu.cash.vo.Cashbook;
 @Transactional
 public class ChartRestService {
 	@Autowired private ChartRestMapper chartRestMapper;
-	public Map<String, Object> selectTotalOutAndInByYear(int year){
-		return chartRestMapper.selectTotalOutAndInByYear(year);
+	public Map<String, Object> selectTotalOfMonthByYear(int year){
+		return chartRestMapper.selectTotalOfMonthByYear(year);
 	}
 	
-	public List<Cashbook> selectCashbookYear() {
-		return chartRestMapper.selectCashbookYear();
+	public Map<String, Object> getTotalOutAndInByYear(int year){
+		return chartRestMapper.selectTotalOutAndInByYear(year);
 	}
 }
