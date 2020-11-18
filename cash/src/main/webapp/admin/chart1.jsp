@@ -17,6 +17,7 @@
 	<div>
 		<h3>연도별 수입 / 지출</h3>
 		<div>
+			<span>연도 : </span>
 			<input type="text" id="year">
 			<button id="totalOutAndInByYearTable" type="button">table</button>
 			<button id="totalOutAndInByYearChart" type="button">chart</button>
@@ -24,13 +25,13 @@
 		<div>
 			<span id="totalOfMonthByYearTableResult"></span>
 		</div>
-	</div>
-	<!-- chart -->
-	<div>
-		<div>
-			<canvas id="chart1"></canvas>
 		</div>
-	</div>
+		<!-- chart -->
+		<div>
+			<div>
+				<canvas id="chart1"></canvas>
+			</div>
+		</div>
 </body>
 <script>
 $('#totalOutAndInByYearChart').click(function(){

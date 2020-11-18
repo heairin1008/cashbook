@@ -11,4 +11,5 @@ import kr.co.gdu.cash.vo.Cashbook;
 public interface ChartRestMapper {
 	public Map<String, Object> selectTotalOfMonthByYear(int year);
 	public Map<String, Object> selectTotalOutAndInByYear(int year);
+	public Map<String, Object> selectTotalOfInOfMonthByYear(int year);
 }

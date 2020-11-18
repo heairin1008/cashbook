@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.gdu.cash.restmapper.ChartRestMapper">
+	<!-- 월별 지출 -->
 	<select id="selectTotalOfMonthByYear" parameterType="int" resultType="java.util.Map">
 		SELECT 
 		YEAR(cashbook_date) year,
@@ -22,7 +23,7 @@
 		WHERE YEAR(cashbook_date) = #{year}
 		AND cashbook_kind = "지출" GROUP BY Year(cashbook_date)
 	</select>
-	
+	<!-- 연도별 수입 / 지출 -->
 	<select id="selectTotalOutAndInByYear" parameterType="int" resultType="java.util.Map">
 		SELECT 
 		YEAR(cashbook_date) '년', 
@@ -31,5 +32,25 @@
 		FROM cashbook
 		WHERE YEAR(cashbook_date) = #{year}
 		GROUP BY YEAR(cashbook_date);
+	</select>
+	<!-- 월별 수입 -->
+	<select id="selectTotalOfInOfMonthByYear" parameterType = "int" resultType="java.util.Map">
+		SELECT 
+		YEAR(cashbook_date) year,
+			sum(case when month(cashbook_date)=1 then cashbook_price END) january,
+			sum(case when month(cashbook_date)=2 then cashbook_price END) february,
+			sum(case when month(cashbook_date)=3 then cashbook_price END) march,
+			sum(case when month(cashbook_date)=4 then cashbook_price END) april,
+			sum(case when month(cashbook_date)=5 then cashbook_price END) may,
+			sum(case when month(cashbook_date)=6 then cashbook_price END) june,
+			sum(case when month(cashbook_date)=7 then cashbook_price END) july,
+			sum(case when month(cashbook_date)=8 then cashbook_price END) august,
+			sum(case when month(cashbook_date)=9 then cashbook_price END) september,
+			sum(case when month(cashbook_date)=10 then cashbook_price END) october,
+			sum(case when month(cashbook_date)=11 then cashbook_price END) november,
+			sum(case when month(cashbook_date)=12 then cashbook_price END) december
+		FROM cashbook
+		WHERE YEAR(cashbook_date) = #{year}
+		AND cashbook_kind = "수입" GROUP BY Year(cashbook_date)
 	</select>
 </mapper>

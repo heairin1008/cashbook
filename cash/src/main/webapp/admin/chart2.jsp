@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,18 +16,18 @@
 	<!-- table -->
 		<h3>연도에 따른 월별 지출</h3>
 		<div>
+			<span>연도 : </span>
 			<input type="text" id="year">
 			<button id="totalOfMonthByYearTable" type="button">table</button>
 			<button id="totalOfMonthByYearChart" type="button">chart</button>
 		</div>
-	<div>
-		<table>
-		</table>
-	</div>
-		<!-- chart -->
-	<div>
-		<canvas id="chart2"></canvas>
-	</div>
+		<div>
+			<span id="totalOfMonthByYearTableResult"></span>
+		</div>
+			<!-- chart -->
+		<div>
+			<canvas id="chart2"></canvas>
+		</div>
 </body>
 
 <script>
@@ -35,12 +36,13 @@ $('#totalOfMonthByYearChart').click(function(){
 		url:'/totalOfMonthByYear/'+$('#year').val(),
 		type:'get',
 		success:function(data){
+			console.log(data);
 			// 차트 구현 코드
 			var ctx = document.getElementById('chart2').getContext('2d');
 			var chart = new Chart(ctx, {
 				type:'bar', // chart 종류
 				data:{
-					labels:['1','2','3','4','5','6','7','8','9','10','11','12'], // x축, y축
+					labels:['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'], // x축, y축
 					datasets:[{
 						label:'연도에 따른 월별 지출',
 						 backgroundColor: [
@@ -79,6 +81,51 @@ $('#totalOfMonthByYearChart').click(function(){
 				}, // chart 안에 사용되는 모든 데이터
 				options:{}
 			});
+		}
+	});
+});
+
+$('#totalOfMonthByYearTable').click(function(){
+	$.ajax({
+		url:'/totalOfMonthByYear/'+$('#year').val(),
+		type:'get',
+		success:function(data){
+			console.log(data);
+			let html = `
+				<table border="1">
+					<tr>
+						<th>연도</th>
+						<th>1월</th>
+						<th>2월</th>
+						<th>3월</th>
+						<th>4월</th>
+						<th>5월</th>
+						<th>6월</th>
+						<th>7월</th>
+						<th>8월</th>
+						<th>9월</th>
+						<th>10월</th>
+						<th>11월</th>
+						<th>12월</th>
+					</tr>
+					<tr>
+						<td>\${$('#year').val()}</td>
+						<td>\${data.january}</td>
+						<td>\${data.february}</td>
+						<td>\${data.march}</td>
+						<td>\${data.april}</td>
+						<td>\${data.may}</td>
+						<td>\${data.june}</td>
+						<td>\${data.july}</td>
+						<td>\${data.august}</td>
+						<td>\${data.september}</td>
+						<td>\${data.october}</td>
+						<td>\${data.november}</td>
+						<td>\${data.december}</td>
+					</tr>
+				</table>
+			`;
+			$('#totalOfMonthByYearTableResult').html(html);
 		}
 	});
 });
