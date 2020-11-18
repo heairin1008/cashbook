@@ -46,7 +46,6 @@
 		<div style="text-align:right;">
 			<span style="padding-left:10px;"><a class="btn btn-small btn-success" href="/admin/addNotice">등록</a></span>
 		</div>
-		<!-- 페이징 -->
 		<ul class="pagination justify-content-center">
 		<!-- 처음 / 이전 버튼 -->
 			<c:choose>
@@ -60,62 +59,24 @@
 				</c:when>
 			</c:choose>
 			<!-- 페이지 수 -->
-			<c:choose>
-            	<c:when test="${lastPage < 4 }">
-                	<c:forEach var="i" begin="${1}" end="${lastPage}">
-                    	<c:choose>
-                           <c:when test="${i eq currentPage}">
-                              <li class="page-item"><a class="page-link" href="/admin/noticeList/${i}">${i}</a></li> 
-                           </c:when>
-                           <c:otherwise>
-                              <li class="page-item"><a class="page-link" href="/admin/noticeList/${i}">${i}</a></li>
-                           </c:otherwise>
-                        </c:choose>
-                     </c:forEach>
-                  </c:when>
-                  <c:otherwise>
-                     <c:choose>
-                        <c:when test="${currentPage < 4}">
-                           <c:forEach var="i" begin="${1}" end="${5}">
-                              <c:choose>
-                                 <c:when test="${i eq currentPage}">
-                                    <li class="page-item"><a class="page-link" href="/admin/noticeList/${i}">${i}</a></li>
-                                 </c:when>
-                                 <c:otherwise>
-                                    <li class="page-item"><a href="/admin/noticeList/${i}">${i}</a></li>
-                                 </c:otherwise>
-                              </c:choose>
-                           </c:forEach>
-                        </c:when>
-                        <c:when test="${currentPage > lastPage-3}">
-                           <c:forEach var="i" begin="${lastPage-4}" end="${lastPage}">
-                              <c:choose>
-                                 <c:when test="${i eq currentPage}">
-                                    <li class="page-item"><a class="page-link" href="/admin/noticeList/${i}">${i}</a></li>  
-                                 </c:when>
-                                 <c:otherwise>
-                                    <li class="page-item"><a class="page-link" href="/admin/noticeList/${i}">${i}</a></li>   
-                                 </c:otherwise>
-                              </c:choose>
-                           </c:forEach>
-                        </c:when>
-                        <c:otherwise>
-                           <c:forEach var="i" begin="${currentPage-2}" end="${currentPage+2}">
-                              <c:choose>
-                                 <c:when test="${i eq currentPage}">
-                                    <li class="page-item"><a class="page-link" href="/admin/noticeList/${i}">${i}</a></li>
-                                 </c:when>
-                                 <c:otherwise>
-                                    <li class="page-item"><a class="page-link" href="/admin/noticeList/${i}">${i}</a></li>  
-                                 </c:otherwise>
-                              </c:choose>
-                           </c:forEach>
-                        </c:otherwise>
-                     </c:choose>
-                  </c:otherwise>
-               </c:choose>
+			<c:forEach var="i" begin="${navbarFirst}" end="${navbarLast}">
+				<c:if test="${i <= lastPage}">
+					<c:choose>
+						<c:when test="${i == currentPage}">
+							<li class="page-item disabled">
+								<a class="page-link" href="#">${i}</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item">
+								<a class="page-link" href="/admin/noticeList/${i}">${i}</a>
+							</li>
+						</c:otherwise>
+					</c:choose>
+				</c:if>
+			</c:forEach>
                <!-- 마지막 / 다음 페이징 버튼 -->
-               <c:choose>
+            <c:choose>
 				<c:when test="${currentPage < lastPage}">
 					<li class="page-item">
 						<a class="page-link" href="/admin/noticeList/${currentPage + 1}">다음</a>

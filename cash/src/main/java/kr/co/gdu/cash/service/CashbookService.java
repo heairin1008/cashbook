@@ -66,4 +66,9 @@ public class CashbookService {
 	public List<Cashbook> getCashbookListAll(){
 		return cashbookMapper.selectCashbookListAll();
 	}
+	
+	// cashbookList 전체 갯수
+	public int getCountList() {
+		return cashbookMapper.selectCountList();
+	}
 }

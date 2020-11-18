@@ -23,4 +23,7 @@ public interface CashbookMapper {
 	List<Cashbook> selectCashbookListByPage(Map<String, Object> map);
 	// 전체 cashbookList -> 엑셀파일
 	List<Cashbook> selectCashbookListAll();
+	
+	// cashbookList 전체 갯수
+	int selectCountList();
 }

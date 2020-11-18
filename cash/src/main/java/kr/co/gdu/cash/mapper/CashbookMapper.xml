@@ -123,9 +123,16 @@
 		ORDER BY cashbook_date DESC, cashbook_id DESC
 	</select>
 	
-		<select id="selectCashbookYear" resultType="java.util.List">
+	<select id="selectCashbookYear" resultType="java.util.List">
 		SELECT YEAR(cashbook_date) year
 		FROM cashbook
 		GROUP BY YEAR(cashbook_date);
+	</select>
+	
+	<!-- cashbookList 전체 갯수 -->
+	<select id="selectCountList" resultType="int">
+		SELECT 
+			COUNT(*) count
+		FROM cashbook
 	</select>
 </mapper>

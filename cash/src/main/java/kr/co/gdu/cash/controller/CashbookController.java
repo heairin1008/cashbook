@@ -22,13 +22,45 @@ public class CashbookController {
 	@Autowired private CashbookService cashbookService;
 	@Autowired private CategoryService categoryService;
 
+	// 엑셀 다운 가능한 cashbookList 페이지
 	@GetMapping("/admin/cashbookList/{currentPage}")
 	public String cashbookList(Model model,
 						@PathVariable(name="currentPage", required = true) int currentPage) {
 		int rowPerPage = 20;
 		
 		List<Cashbook> cashbookList = cashbookService.getCashbookListByPage(currentPage, rowPerPage);
+		
+		int totalCount = cashbookService.getCountList();
+		int lastPage = 0;
+		if((totalCount%rowPerPage) == 0) {
+			lastPage = totalCount / rowPerPage;
+		}else {
+			lastPage = (totalCount / rowPerPage) + 1;
+		}
+		 // 페이징 변수
+		int navbarPerPage = 10;
+		int navbarFirst = 0;
+		int navbarLast = 0;
+		
+		if((currentPage / navbarPerPage) == 0) {
+			navbarFirst = 1;
+			navbarLast = 10;
+		}else if((currentPage % navbarPerPage) == 0){
+			navbarFirst = (currentPage / navbarPerPage) * 10 - 9;
+			navbarLast = (currentPage / navbarPerPage) * 10 ;
+		}else {
+			navbarFirst = (currentPage / navbarPerPage) * 10 + 1;
+			navbarLast = (currentPage / navbarPerPage) * 10 + 10;
+		}
+		
+		
 		model.addAttribute("cashbookList", cashbookList);
+		model.addAttribute("lastPage", lastPage);
+		model.addAttribute("currentPage", currentPage);
+		
+		model.addAttribute("navbarPerPage", navbarPerPage);
+		model.addAttribute("navbarFirst", navbarFirst);
+		model.addAttribute("navbarLast", navbarLast);
 		return "cashbookList";
 	}
 	
