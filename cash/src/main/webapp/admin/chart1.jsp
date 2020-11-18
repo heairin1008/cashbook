@@ -8,33 +8,48 @@
 <title>chart1</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><!-- jQuery -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script><!-- chart.js -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+	#table{
+		width:70%;
+		margin:auto;
+	}
+	div{
+		text-align:center;
+		padding-bottom:30px;
+	}
+</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/view/inc/chartMenu.jsp"></jsp:include>
-	<h1>chart1</h1>
-	<!-- table -->
-	<div>
-		<h3>연도별 수입 / 지출</h3>
-		<div>
-			<span>연도 : </span>
-			<input type="text" id="year">
-			<button id="totalOutAndInByYearTable" type="button">table</button>
-			<button id="totalOutAndInByYearChart" type="button">chart</button>
+	<div id="table">
+		<div style="padding:20px 0px 20px 0px; text-align:center;" class="jumbotron">
+			<span style="font-size:36px;" class="font-weight-bold">연도별 수입 / 지출</span>
+		</div>
+		<div style="margin-left:35%">
+			<div class="form-inline">
+				<h4 class="font-weight-bold">연도 검색</h4>
+				<input class="form-control" type="text" id="year">
+				<span>&nbsp;</span>
+				<button id="totalOutAndInByYear" class="btn btn-info" type="button">검색</button>
+			</div>
 		</div>
 		<div>
 			<span id="totalOfMonthByYearTableResult"></span>
 		</div>
-		</div>
-		<!-- chart -->
+			<!-- chart -->
 		<div>
-			<div>
+			<div id="newChart">
 				<canvas id="chart1"></canvas>
 			</div>
 		</div>
+	</div>	
 </body>
 <script>
-$('#totalOutAndInByYearChart').click(function(){
+$('#totalOutAndInByYear').click(function(){
+	$('#chart1').remove();
+	$('#newChart').append('<canvas id="chart1"></canvas>');
 	$.ajax({
 		url:'/totalOutAndInByYear/'+$('#year').val(),
 		type:'get',
@@ -57,7 +72,7 @@ $('#totalOutAndInByYearChart').click(function(){
 	});
 });
 
-$('#totalOutAndInByYearTable').click(function(){
+$('#totalOutAndInByYear').click(function(){
 	// $('#totalOfMonthByYearTableResult').html('totalOfMonthByYearTableResult');
 	$.ajax({
 		url:'/totalOutAndInByYear/'+$('#year').val(),
@@ -65,7 +80,7 @@ $('#totalOutAndInByYearTable').click(function(){
 		success:function(data){
 			console.log(data);
 			let html = `
-				<table border="1">
+				<table class="table table-striped table-bordered text-center">
 					<tr>
 						<th>연도</th>
 						<th>수입</th>

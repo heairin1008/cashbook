@@ -7,42 +7,62 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><!-- jQuery -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script><!-- chart.js -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+	#table{
+		width:70%;
+		margin:auto;
+	}
+	div{
+		text-align:center;
+		padding-bottom:30px;
+	}
+</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/view/inc/chartMenu.jsp"></jsp:include>
-	<h1>chart3</h1>
-	<!-- chart -->
-	<h3>연도에 따른 월별 수입</h3>
-		<div>
-			<span>연도 : </span>
-			<input type="text" id="year">
-			<button id="totalOfInOfMonthByYearTable" type="button">table</button>
-			<button id="totalOfInOfMonthByYearChart" type="button">chart</button>
+	<div id="table">
+		<div style="padding:20px 0px 20px 0px; text-align:center;" class="jumbotron">
+			<span style="font-size:36px;" class="font-weight-bold">연도별 월 수입내역</span>
+		</div>
+		<!-- table -->
+		<div style="margin-left:35%">
+			<div class="form-inline">
+				<h4 class="font-weight-bold">연도 검색</h4>
+				<input class="form-control" type="text" id="year">
+				<span>&nbsp;</span>
+				<button id="totalOfInOfMonthByYear" class="btn btn-info" type="button">검색</button>
+			</div>
 		</div>
 		<div>
 			<span id="totalOfInOfMonthByYearTableResult"></span>
 		</div>
 			<!-- chart -->
 		<div>
-			<canvas id="chart3"></canvas>
+			<div id="newChart">
+				<canvas id="chart3"></canvas>
+			</div>
 		</div>
+	</div>	
 </body>
 <script>
-$('#totalOfInOfMonthByYearChart').click(function(){
+$('#totalOfInOfMonthByYear').click(function(){
+	$('#chart3').remove();
+	$('#newChart').append('<canvas id="chart3"></canvas>');
 	$.ajax({
 		url:'/totalOfInOfMonthByYear/'+$('#year').val(),
 		type:'get',
 		success:function(data){
 			console.log(data);
 			// 차트 구현 코드
-			var ctx = document.getElementById('chart2').getContext('2d');
+			var ctx = document.getElementById('chart3').getContext('2d');
 			var chart = new Chart(ctx, {
 				type:'bar', // chart 종류
 				data:{
 					labels:['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'], // x축, y축
 					datasets:[{
-						label:'연도에 따른 월별 수입',
+						label:'연도별 월 수입내역',
 						 backgroundColor: [
 				                'rgba(255, 99, 132, 0.2)',
 				                'rgba(54, 162, 235, 0.2)',
@@ -83,14 +103,14 @@ $('#totalOfInOfMonthByYearChart').click(function(){
 	});
 });
 
-$('#totalOfMonthByYearTable').click(function(){
+$('#totalOfInOfMonthByYear').click(function(){
 	$.ajax({
 		url:'/totalOfInOfMonthByYear/'+$('#year').val(),
 		type:'get',
 		success:function(data){
 			console.log(data);
 			let html = `
-				<table border="1">
+				<table class="table table-striped table-bordered text-center">
 					<tr>
 						<th>연도</th>
 						<th>1월</th>

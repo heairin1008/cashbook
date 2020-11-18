@@ -8,30 +8,48 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><!-- jQuery -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script><!-- chart.js -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+	#table{
+		width:70%;
+		margin:auto;
+	}
+	div{
+		text-align:center;
+		padding-bottom:30px;
+	}
+</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/view/inc/chartMenu.jsp"></jsp:include>
-	<h1>chart2</h1>
+	<div id="table">
+		<div style="padding:20px 0px 20px 0px; text-align:center;" class="jumbotron">
+			<span style="font-size:36px;" class="font-weight-bold">연도별 월 지출내역</span>
+		</div>
 	<!-- table -->
-		<h3>연도에 따른 월별 지출</h3>
-		<div>
-			<span>연도 : </span>
-			<input type="text" id="year">
-			<button id="totalOfMonthByYearTable" type="button">table</button>
-			<button id="totalOfMonthByYearChart" type="button">chart</button>
+		<div style="margin-left:35%">
+			<div class="form-inline">
+				<h4 class="font-weight-bold">연도 검색</h4>
+				<input class="form-control" type="text" id="year">
+				<span>&nbsp;</span>
+				<button id="totalOfMonthByYear" class="btn btn-info" type="button">검색</button>
+			</div>
 		</div>
 		<div>
 			<span id="totalOfMonthByYearTableResult"></span>
 		</div>
 			<!-- chart -->
-		<div>
+		<div id="newChart">
 			<canvas id="chart2"></canvas>
 		</div>
+	</div>
 </body>
 
 <script>
-$('#totalOfMonthByYearChart').click(function(){
+$('#totalOfMonthByYear').click(function(){
+	$('#chart2').remove();
+	$('#newChart').append('<canvas id="chart2"></canvas>');
 	$.ajax({
 		url:'/totalOfMonthByYear/'+$('#year').val(),
 		type:'get',
@@ -44,7 +62,7 @@ $('#totalOfMonthByYearChart').click(function(){
 				data:{
 					labels:['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'], // x축, y축
 					datasets:[{
-						label:'연도에 따른 월별 지출',
+						label:'연도별 월 지출내역',
 						 backgroundColor: [
 				                'rgba(255, 99, 132, 0.2)',
 				                'rgba(54, 162, 235, 0.2)',
@@ -85,14 +103,14 @@ $('#totalOfMonthByYearChart').click(function(){
 	});
 });
 
-$('#totalOfMonthByYearTable').click(function(){
+$('#totalOfMonthByYear').click(function(){
 	$.ajax({
 		url:'/totalOfMonthByYear/'+$('#year').val(),
 		type:'get',
 		success:function(data){
 			console.log(data);
 			let html = `
-				<table border="1">
+				<table class="table table-striped table-bordered text-center">
 					<tr>
 						<th>연도</th>
 						<th>1월</th>

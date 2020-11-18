@@ -17,7 +17,7 @@ public class ChartRestController {
 	
 	@GetMapping("/totalOfMonthByYear/{year}")
 	public Map<String, Object> totalOfMonthByYear(@PathVariable(name="year") int year){
-		return chartRestService.selectTotalOfMonthByYear(year); // @RestController 
+		return chartRestService.getTotalOfMonthByYear(year); // @RestController 
 	}
 	
 	@GetMapping("/totalOutAndInByYear/{year}")
@@ -25,5 +25,10 @@ public class ChartRestController {
 			@PathVariable(name="year") int year){
 		System.out.println(year);
 		return chartRestService.getTotalOutAndInByYear(year);
+	}
+	
+	@GetMapping("/totalOfInOfMonthByYear/{year}")
+	public Map<String, Object> totalOfInOfMonthByYear(@PathVariable(name="year") int year){
+		return chartRestService.getTotalOfInOfMonthByYear(year); // @RestController 
 	}
 }
