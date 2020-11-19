@@ -52,4 +52,15 @@
 		WHERE YEAR(cashbook_date) = #{year}
 		AND cashbook_kind = "수입"
 	</select>
+	
+	<select id="selectTotalOfCategoryByYear" parameterType="int" resultType="java.util.Map">
+		SELECT 
+			YEAR(cashbook_date) year, 
+			nvl(SUM(case when category_name='간식' then cashbook_price END), 0) '간식',
+			nvl(SUM(case when category_name='생활' then cashbook_price END), 0) '생활',
+			nvl(SUM(case when category_name='식비' then cashbook_price END), 0) '식비',
+			nvl(SUM(case when category_name='의료' then cashbook_price END), 0) '의료'
+		FROM cashbook
+		WHERE YEAR(cashbook_date) = #{year}
+	</select>
 </mapper>

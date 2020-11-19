@@ -17,6 +17,10 @@
 		text-align:center;
 		padding-bottom:30px;
 	}
+	
+	#chartTable{
+		font-size:65%;
+	}
 </style>
 </head>
 <body>
@@ -35,7 +39,7 @@
 				<button id="totalOfInOfMonthByYear" class="btn btn-info" type="button">검색</button>
 			</div>
 		</div>
-		<div>
+		<div id="chartTable">
 			<span id="totalOfInOfMonthByYearTableResult"></span>
 		</div>
 			<!-- chart -->
