@@ -18,9 +18,6 @@
 		text-align:center;
 		padding-bottom:30px;
 	}
-	#chartTable{
-		font-size:65%;
-	}
 </style>
 </head>
 <body>
@@ -39,7 +36,7 @@
 				<button id="totalOfMonthByYear" class="btn btn-info" type="button">검색</button>
 			</div>
 		</div>
-		<div id="chartTable">
+		<div>
 			<span id="totalOfMonthByYearTableResult"></span>
 		</div>
 			<!-- chart -->
@@ -113,7 +110,7 @@ $('#totalOfMonthByYear').click(function(){
 		success:function(data){
 			console.log(data);
 			let html = `
-				<table class="table table-striped table-bordered text-center">
+				<table id="table" class="table table-striped table-bordered text-center">
 					<tr>
 						<th>연도</th>
 						<th>1월</th>

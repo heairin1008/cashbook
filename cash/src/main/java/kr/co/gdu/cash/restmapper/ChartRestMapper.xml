@@ -59,7 +59,48 @@
 			nvl(SUM(case when category_name='간식' then cashbook_price END), 0) '간식',
 			nvl(SUM(case when category_name='생활' then cashbook_price END), 0) '생활',
 			nvl(SUM(case when category_name='식비' then cashbook_price END), 0) '식비',
-			nvl(SUM(case when category_name='의료' then cashbook_price END), 0) '의료'
+			nvl(SUM(case when category_name='의료' then cashbook_price END), 0) '의료',
+			nvl(SUM(case when category_name='쇼핑' then cashbook_price END), 0) '쇼핑'
+		FROM cashbook
+		WHERE YEAR(cashbook_date) = #{year}
+	</select>
+	
+	<select id="selectTotalOfInCategoryByYear" parameterType="int" resultType="java.util.Map">
+		SELECT 
+			YEAR(cashbook_date) year, 
+			nvl(SUM(case when category_name='월급' then cashbook_price END), 0) '월급',
+			nvl(SUM(case when category_name='용돈' then cashbook_price END), 0) '용돈'
+		FROM cashbook
+		WHERE YEAR(cashbook_date) = #{year}
+	</select>
+	
+	<select id="selectTotalInOutByYear" parameterType="int" resultType="java.util.Map">
+		SELECT
+			YEAR(cashbook_date) YEAR,
+			nvl(SUM(case when month(cashbook_date) = 1 AND cashbook_kind = '수입' then cashbook_price END) - 
+			SUM(case when month(cashbook_date) = 1 AND cashbook_kind = '지출' then cashbook_price END),0) january,
+			nvl(SUM(case when month(cashbook_date) = 2 AND cashbook_kind = '수입' then cashbook_price END) - 
+			SUM(case when month(cashbook_date) = 2 AND cashbook_kind = '지출' then cashbook_price END), 0) february,
+			nvl(SUM(case when month(cashbook_date) = 3 AND cashbook_kind = '수입' then cashbook_price END) - 
+			SUM(case when month(cashbook_date) = 3 AND cashbook_kind = '지출' then cashbook_price END), 0) march,
+			nvl(SUM(case when month(cashbook_date) = 4 AND cashbook_kind = '수입' then cashbook_price END) - 
+			SUM(case when month(cashbook_date) = 4 AND cashbook_kind = '지출' then cashbook_price END), 0) april,
+			nvl(SUM(case when month(cashbook_date) = 5 AND cashbook_kind = '수입' then cashbook_price END) - 
+			SUM(case when month(cashbook_date) = 5 AND cashbook_kind = '지출' then cashbook_price END), 0) may,
+			nvl(SUM(case when month(cashbook_date) = 6 AND cashbook_kind = '수입' then cashbook_price END) - 
+			SUM(case when month(cashbook_date) = 6 AND cashbook_kind = '지출' then cashbook_price END), 0) june,
+			nvl(SUM(case when month(cashbook_date) = 7 AND cashbook_kind = '수입' then cashbook_price END) - 
+			SUM(case when month(cashbook_date) = 7 AND cashbook_kind = '지출' then cashbook_price END), 0) july,
+			nvl(SUM(case when month(cashbook_date) = 8 AND cashbook_kind = '수입' then cashbook_price END) - 
+			SUM(case when month(cashbook_date) = 8 AND cashbook_kind = '지출' then cashbook_price END), 0) august,
+			nvl(SUM(case when month(cashbook_date) = 9 AND cashbook_kind = '수입' then cashbook_price END) - 
+			SUM(case when month(cashbook_date) = 9 AND cashbook_kind = '지출' then cashbook_price END), 0) september,
+			nvl(SUM(case when month(cashbook_date) = 10 AND cashbook_kind = '수입' then cashbook_price END) - 
+			SUM(case when month(cashbook_date) = 10 AND cashbook_kind = '지출' then cashbook_price END), 0) october,
+			nvl(SUM(case when month(cashbook_date) = 11 AND cashbook_kind = '수입' then cashbook_price END) - 
+			SUM(case when month(cashbook_date) = 11 AND cashbook_kind = '지출' then cashbook_price END), 0) november,
+			nvl(SUM(case when month(cashbook_date) = 12 AND cashbook_kind = '수입' then cashbook_price END) - 
+			SUM(case when month(cashbook_date) = 12 AND cashbook_kind = '지출' then cashbook_price END), 0) december
 		FROM cashbook
 		WHERE YEAR(cashbook_date) = #{year}
 	</select>

@@ -29,4 +29,8 @@ public class ChartRestService {
 	public Map<String, Object> getTotalOfCategoryByYear(int year){
 		return chartRestMapper.selectTotalOfCategoryByYear(year);
 	}
+	
+	public Map<String, Object> getTotalOfInCategoryByYear(int year){
+		return chartRestMapper.selectTotalOfInCategoryByYear(year);
+	}
 }

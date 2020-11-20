@@ -17,10 +17,6 @@
 		text-align:center;
 		padding-bottom:30px;
 	}
-	
-	#chartTable{
-		font-size:65%;
-	}
 </style>
 </head>
 <body>
@@ -39,7 +35,7 @@
 				<button id="totalOfInOfMonthByYear" class="btn btn-info" type="button">검색</button>
 			</div>
 		</div>
-		<div id="chartTable">
+		<div>
 			<span id="totalOfInOfMonthByYearTableResult"></span>
 		</div>
 			<!-- chart -->
@@ -114,7 +110,7 @@ $('#totalOfInOfMonthByYear').click(function(){
 		success:function(data){
 			console.log(data);
 			let html = `
-				<table class="table table-striped table-bordered text-center">
+				<table id="table" class="table table-striped table-bordered text-center">
 					<tr>
 						<th>연도</th>
 						<th>1월</th>
@@ -122,13 +118,6 @@ $('#totalOfInOfMonthByYear').click(function(){
 						<th>3월</th>
 						<th>4월</th>
 						<th>5월</th>
-						<th>6월</th>
-						<th>7월</th>
-						<th>8월</th>
-						<th>9월</th>
-						<th>10월</th>
-						<th>11월</th>
-						<th>12월</th>
 					</tr>
 					<tr>
 						<td>\${$('#year').val()}</td>
@@ -137,15 +126,29 @@ $('#totalOfInOfMonthByYear').click(function(){
 						<td>\${data.march}</td>
 						<td>\${data.april}</td>
 						<td>\${data.may}</td>
-						<td>\${data.june}</td>
-						<td>\${data.july}</td>
-						<td>\${data.august}</td>
-						<td>\${data.september}</td>
-						<td>\${data.october}</td>
-						<td>\${data.november}</td>
-						<td>\${data.december}</td>
 					</tr>
 				</table>
+				<br>
+				<table id="table" class="table table-striped table-bordered text-center">
+				<tr>
+					<th>6월</th>
+					<th>7월</th>
+					<th>8월</th>
+					<th>9월</th>
+					<th>10월</th>
+					<th>11월</th>
+					<th>12월</th>
+				</tr>
+				<tr>
+					<td>\${data.june}</td>
+					<td>\${data.july}</td>
+					<td>\${data.august}</td>
+					<td>\${data.september}</td>
+					<td>\${data.october}</td>
+					<td>\${data.november}</td>
+					<td>\${data.december}</td>
+				</tr>
+			</table>
 			`;
 			$('#totalOfInOfMonthByYearTableResult').html(html);
 		}
