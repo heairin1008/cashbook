@@ -118,6 +118,19 @@ $('#totalOfMonthByYear').click(function(){
 						<th>3월</th>
 						<th>4월</th>
 						<th>5월</th>
+					</tr>
+					<tr>
+						<td>\${$('#year').val()}</td>
+						<td>\${data.january}</td>
+						<td>\${data.february}</td>
+						<td>\${data.march}</td>
+						<td>\${data.april}</td>
+						<td>\${data.may}</td>
+					</tr>
+				</table>
+				<br>
+				<table id="table" class="table table-striped table-bordered text-center">
+					<tr>
 						<th>6월</th>
 						<th>7월</th>
 						<th>8월</th>
@@ -127,12 +140,6 @@ $('#totalOfMonthByYear').click(function(){
 						<th>12월</th>
 					</tr>
 					<tr>
-						<td>\${$('#year').val()}</td>
-						<td>\${data.january}</td>
-						<td>\${data.february}</td>
-						<td>\${data.march}</td>
-						<td>\${data.april}</td>
-						<td>\${data.may}</td>
 						<td>\${data.june}</td>
 						<td>\${data.july}</td>
 						<td>\${data.august}</td>

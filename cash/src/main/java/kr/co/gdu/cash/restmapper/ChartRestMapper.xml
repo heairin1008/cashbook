@@ -74,7 +74,7 @@
 		WHERE YEAR(cashbook_date) = #{year}
 	</select>
 	
-	<select id="selectTotalInOutByYear" parameterType="int" resultType="java.util.Map">
+	<select id="selectTotalOfInOutByYear" parameterType="int" resultType="java.util.Map">
 		SELECT
 			YEAR(cashbook_date) YEAR,
 			nvl(SUM(case when month(cashbook_date) = 1 AND cashbook_kind = '수입' then cashbook_price END) - 

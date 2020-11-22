@@ -41,4 +41,9 @@ public class ChartRestController {
 	public Map<String, Object> totalOfInCategoryByYear(@PathVariable(name="year") int year){
 		return chartRestService.getTotalOfInCategoryByYear(year); // @RestController 
 	}
+	
+	@GetMapping("/totalOfInOutByYear/{year}")
+	public Map<String, Object> totalOfInOutByYear(@PathVariable(name="year") int year){
+		return chartRestService.getTotalOfInOutByYear(year);
+	}
 }
