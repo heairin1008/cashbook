@@ -7,24 +7,37 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+	#table{
+		width:70%;
+		margin:auto;
+	}
+	div{
+		padding-bottom:20px;
+	}
+</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
-	<h1>cashbookListByDay</h1>
-	<div>
-		<a href="/admin/cashbookByDay/pre/${currentYear}/${currentMonth}/${currentDay}">이전</a>
-		<span>${currentYear}년${currentMonth}월${currentDay}일</span>
-		<a href="/admin/cashbookByDay/next/${currentYear}/${currentMonth}/${currentDay}">이후</a>
+	<div id="table" style="padding:20px 0px 20px 0px; text-align:center;" class="jumbotron">
+		<span style="font-size:36px;" class="font-weight-bold">일일 수입 / 지출</span>
 	</div>
-	<a href = "/admin/addCashbook/now/${currentYear}/${currentMonth}/${currentDay}">수입/지출 입력</a>
-	<table border="1">
+	<div style="padding-top:10px;">
+		<h3 class="text-center font-weight-bold">
+			<a style="text-decoration:none;" class="text-secondary" href="/admin/cashbookByDay/pre/${currentYear}/${currentMonth}/${currentDay}"> << </a>
+			${currentYear}년${currentMonth}월${currentDay}일
+			<a style="text-decoration:none;" class="text-secondary" href="/admin/cashbookByDay/next/${currentYear}/${currentMonth}/${currentDay}"> >> </a>
+		</h3>
+	</div>
+	<div id="table"><a class="btn btn-sm btn-info font-weight-bold" href = "/admin/addCashbook/now/${currentYear}/${currentMonth}/${currentDay}">수입/지출 입력</a></div>
+	<table id="table" class="table table-bordered text-center">
 		<thead>
 			<tr>
-				<th>cashbookId</th>
-				<th>cashbookKind</th>
-				<th>categoryName</th>
-				<th>cashbookPrice</th>
-				<th>cashbookContent</th>
+				<th>번호</th>
+				<th>수입 / 지출</th>
+				<th>카테고리</th>
+				<th>금액</th>
+				<th>내용</th>
 				<th>수정</th>
 				<th>삭제</th>
 			</tr>

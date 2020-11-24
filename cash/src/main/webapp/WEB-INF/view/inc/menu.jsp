@@ -30,5 +30,8 @@
 		<li class="nav-item col-2">
 			<a class="nav-link" href="/admin/logout">LogOut</a>
 		</li>
+		<li class="nav-item col-2">
+			<a class="nav-link" href="/admin/newNoticeList/1">새 공지사항</a>
+		</li>
 	</ul>
 </nav>
