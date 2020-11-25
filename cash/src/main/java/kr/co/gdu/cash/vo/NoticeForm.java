@@ -12,5 +12,5 @@ public class NoticeForm {
 	private String noticeTitle;
 	private String noticeContent;
 	private String noticeDate;
-	private List<MultipartFile> noticefileList;
+	private List<MultipartFile> noticefile;
 }

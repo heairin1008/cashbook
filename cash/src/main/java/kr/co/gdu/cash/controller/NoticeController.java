@@ -12,22 +12,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.gdu.cash.service.NoticeService;
 import kr.co.gdu.cash.vo.Notice;
+import kr.co.gdu.cash.vo.NoticeForm;
 
 @Controller
 public class NoticeController {
-	@Autowired private NoticeService noticeService;
+	@Autowired
+	private NoticeService noticeService;
 	
-	// 공지 목록
+		// 공지 목록
 	@GetMapping(value="/admin/noticeList/{currentPage}")
 	public String noticeList(Model model,
 							@PathVariable(value="currentPage") int currentPage) {
 		System.out.println("공지 목록페이지 실행");
 		int rowPerPage = 10;
 		List<Notice> noticeList = noticeService.getNoticeListByPage(currentPage, rowPerPage);
-		
+			
 		int totalCount = noticeService.getCountList();
 		int lastPage = 0;
-		
+			
 		if((totalCount%rowPerPage) == 0) {
 			lastPage = totalCount/rowPerPage;
 		}else {
@@ -37,7 +39,7 @@ public class NoticeController {
 		int navbarPerPage = 10;
 		int navbarFirst = 0;
 		int navbarLast = 0;
-		
+			
 		if((currentPage / navbarPerPage) == 0) {
 			navbarFirst = 1;
 			navbarLast = 10;
@@ -48,65 +50,63 @@ public class NoticeController {
 			navbarFirst = (currentPage / navbarPerPage) * 10 + 1;
 			navbarLast = (currentPage / navbarPerPage) * 10 + 10;
 		}
-		
+			
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("lastPage", lastPage);
 		model.addAttribute("noticeList", noticeList);
-		
+			
 		model.addAttribute("navbarPerPage", navbarPerPage);
 		model.addAttribute("navbarFirst", navbarFirst);
-		model.addAttribute("navbarLast", navbarLast);
+		model.addAttribute("navbarLast", navbarLast);	
 		// noticeService 호출
 		return "noticeList";
 	}
 	
-	// 공지 입력 폼
-	@GetMapping(value="/admin/addNotice")
-	public String addNoitce() {
-		System.out.println("입력 폼 실행");
+	@GetMapping("/admin/addNotice")
+	public String addNotice() {
+		// 공지 입력 폼
 		return "addNotice";
 	}
-	// 공지 입력 액션
-	@PostMapping(value="/admin/addNotice")
-	public String addNotice(Notice notice) {
-		System.out.println("입력 폼 액션 실행");
-		noticeService.addNotice(notice);
+	
+	@PostMapping("/admin/addNotice")
+	public String addNotice(NoticeForm noticeForm) {
+		noticeService.addNotice(noticeForm);
+		System.out.println(noticeForm);
 		return "redirect:/admin/noticeList/1";
 	}
 	
-	// 공지 상세페이지
-	@GetMapping(value="/admin/noticeOne/{noticeId}")
-	public String noticeOne(Model model, 
-							@PathVariable(value="noticeId") int noticeId) {
-		System.out.println("상세페이지 실행");
+	@GetMapping("/admin/noticeOne")
+	public String noticeOne(Model model, @RequestParam(value="noticeId") int noticeId) {
 		Notice noticeOne = noticeService.getNoticeOne(noticeId);
 		model.addAttribute("noticeOne", noticeOne);
-		
 		return "noticeOne";
 	}
-
-	// 공지 삭제
-	@GetMapping(value="/admin/removeNotice/{noticeId}")
-	public String removeNotice(@PathVariable(value = "noticeId") int noticeId) {
-		System.out.println("삭제 실행");
+	
+	@GetMapping("/admin/removeNotice")
+	public String removeNotice(@RequestParam(value="noticeId") int noticeId) {
+		System.out.println(noticeId);
 		noticeService.removeNotice(noticeId);
 		return "redirect:/admin/noticeList/1";
 	}
 	
-	// 공지 수정 폼
-	@GetMapping(value="/admin/modifyNotice/{noticeId}")
-	public String modifyNotice(Model model, @PathVariable(value="noticeId") int noticeId) {
-		System.out.println("modifyNotice 폼 실행");
-		Notice notice = noticeService.getNoticeOne(noticeId);
-		model.addAttribute("notice", notice);
+	@GetMapping("/admin/modifyNotice")
+	public String modifyNotice(Model model, @RequestParam(value="noticeId") int noticeId) {
+		Notice noticeOne = noticeService.getNoticeOne(noticeId);
+		model.addAttribute("noticeOne", noticeOne);
 		return "modifyNotice";
 	}
 	
-	// 공지 수정 액션
-	@PostMapping(value="/admin/modifyNotice")
-	public String modifyNotice(Notice notice) {
-		System.out.println("modifyNotice 실행");
-		noticeService.modifyNotice(notice);
-		return "redirect:/admin/noticeOne/"+notice.getNoticeId();
+	@PostMapping("/admin/modifyNotice")
+	public String modifyNotice(NoticeForm noticeForm) {
+		System.out.println(noticeForm);
+		noticeService.modifyNotice(noticeForm);
+		return "redirect:/admin/noticeOne?noticeId="+noticeForm.getNoticeId();
+	}
+	
+	@GetMapping("/admin/delfile")
+	public String delfile(@RequestParam(value="noticefileId") int noticefileId,
+						@RequestParam(value="noticeId") int noticeId) {
+		noticeService.removeNoticefileOne(noticefileId);
+		return "redirect:/admin/modifyNotice?noticeId="+noticeId;
 	}
 }

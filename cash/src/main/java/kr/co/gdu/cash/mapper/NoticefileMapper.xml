@@ -3,16 +3,32 @@
 <mapper namespace="kr.co.gdu.cash.mapper.NoticefileMapper">
 	<insert id="insertNoticefile" parameterType="kr.co.gdu.cash.vo.Noticefile">
 		INSERT INTO noticefile(
-			noticefile_id,
+			notice_id,
 			noticefile_name,
 			noticefile_type,
 			noticefile_size
 		) VALUES(
-			#{noticefileId},
+			#{noticeId},
 			#{noticefileName},
 			#{noticefileType},
 			#{noticefileSize}
 		)
 	</insert>
 
+	<select id="selectNoticefileNameList" parameterType="int" resultType="String">
+		SELECT
+			noticefile_name
+		FROM noticefile
+		WHERE notice_id = #{noticeId}
+	</select>
+	
+	<delete id="deleteNoticefile" parameterType="int">
+		DELETE FROM noticefile
+		WHERE notice_id = #{noticeId}
+	</delete>
+	
+	<delete id="removeNoticefileOne" parameterType="int">
+		DELETE FROM noticefile
+		WHERE noticefile_id = #{noticefileId}
+	</delete>
 </mapper>

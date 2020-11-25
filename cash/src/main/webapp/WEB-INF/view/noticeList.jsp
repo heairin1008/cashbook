@@ -5,8 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>noticeList</title>
-<!-- Latest compiled and minified CSS -->
+<title>newNoticeList</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style>
 	#table{
@@ -25,7 +24,7 @@
 			<span style="font-size:36px;" class="font-weight-bold">공지사항</span>
 		</div>
 		<div></div>
-		<table class="table table-striped text-center">
+		<table class="table table-hover text-center">
 			<thead>
 				<tr>
 					<th>notice_id</th>
@@ -37,7 +36,7 @@
 				<c:forEach var="c" items="${noticeList}">
 					<tr>
 						<td>${c.noticeId}</td>
-						<td><a href="/admin/noticeOne/${c.noticeId}">${c.noticeTitle}</a></td>
+						<td><a style="text-decoration:none;" href="/admin/noticeOne?noticeId=${c.noticeId}">${c.noticeTitle}</a></td>
 						<td>${c.noticeDate}</td>
 					</tr>
 				</c:forEach>
@@ -57,6 +56,14 @@
 						<a class="page-link" href="/admin/noticeList/${currentPage - 1}">이전</a>
 					</li>
 				</c:when>
+				<c:otherwise>
+					<li class="page-item disabled">
+						<a class="page-link" href="#">처음</a>
+					</li>
+					<li class="page-item disabled">
+						<a class="page-link" href="#">이전</a>
+					</li>
+				</c:otherwise>
 			</c:choose>
 			<!-- 페이지 수 -->
 			<c:forEach var="i" begin="${navbarFirst}" end="${navbarLast}">

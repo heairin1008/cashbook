@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.gdu.cash.mapper.NoticeMapper">
 	<select id="selectLatestNoiceList" resultType="kr.co.gdu.cash.vo.Notice">
 		SELECT 
@@ -26,6 +24,9 @@
 	
 	<!-- 공지사항 추가 -->
 	<insert id="addNotice" parameterType="kr.co.gdu.cash.vo.Notice">
+		<selectKey resultType="int" keyProperty="noticeId" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
 		INSERT INTO notice(
 			notice_title,
 			notice_content,
@@ -37,15 +38,47 @@
 		)
 	</insert>
 	
+	<resultMap type="kr.co.gdu.cash.vo.Notice" id="resultNoticeOne">
+		<result property="noticeId" column="notice_id"/>
+		<result property="noticeTitle" column="notice_title"/>
+		<result property="noticeContent" column="notice_content"/>
+		<result property="noticeDate" column="notice_date"/>
+		<collection property="noticefile" ofType="kr.co.gdu.cash.vo.Noticefile">
+			<result property="noticefileId" column="noticefile_id"/>
+			<result property="noticeId" column="notice_id"/>
+			<result property="noticefileName" column="noticefile_name"/>
+			<result property="noticefileType" column="noticefile_type"/>
+			<result property="noticefileSize" column="noticefile_size"/>
+		</collection>
+		<collection property="commentList" ofType="kr.co.gdu.cash.vo.Comment">
+			<result property="commentId" column="comment_id"/>
+			<result property="noticeId" column="notice_id"/>
+			<result property="commentContent" column="comment_content"/>
+			<result property="commentDate" column="comment_date"/>
+		</collection>
+	</resultMap>
+	
 	<!-- 공지사항 상세보기 -->
-	<select id="selectNoticeOne" parameterType="int" resultType="kr.co.gdu.cash.vo.Notice">
+	<select id="selectNoticeOne" parameterType="int" resultMap="resultNoticeOne">
 		SELECT
-			notice_id noticeId,
-			notice_title noticeTitle,
-			notice_content noticeContent,
-			notice_date noticeDate
-		FROM notice
-		WHERE notice_id = #{noticeId}
+			n.notice_id,
+			n.notice_title,
+			n.notice_content,
+			n.notice_date,
+			nf.noticefile_id,
+			nf.notice_id,
+			nf.noticefile_name,
+			nf.noticefile_type,
+			nf.noticefile_size,
+			c.comment_id,
+			c.notice_id,
+			c.comment_content,
+			c.comment_date
+		FROM notice n LEFT OUTER JOIN noticefile nf
+		ON n.notice_id = nf.notice_id
+		LEFT OUTER JOIN comment c
+		ON n.notice_id = c.notice_id
+		WHERE n.notice_id = #{noticeId}
 	</select>
 	
 	<!-- 공지사항 수정 -->
