@@ -16,7 +16,7 @@
 			<a class="nav-link" href="${pageContext.request.contextPath}/admin/cashbookByMonth/-1/-1">가계부</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="${pageContext.request.contextPath}/admin/cashbookList/1">cashbook</a>
+			<a class="nav-link" href="${pageContext.request.contextPath}/admin/cashbookList/1">전체내역</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" href="${pageContext.request.contextPath}/admin/chart1.jsp">통계자료</a>

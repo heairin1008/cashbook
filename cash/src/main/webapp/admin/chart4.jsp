@@ -17,6 +17,10 @@
 		text-align:center;
 		padding-bottom:30px;
 	}
+	#newChart{
+		width:60%;
+		margin:auto;
+	}
 </style>
 </head>
 <body>
@@ -43,11 +47,65 @@
 	</div>
 </body>
 <script>
+//페이지 클릭 후 바로 보이는 차트 / 테이블 default값 = 2020
+$('#chart4').remove();
+	$('#newChart').append('<canvas id="chart4"></canvas>');
+	$.ajax({
+		url:'${pageContext.request.contextPath}/totalOfCategoryByYear/'+2020,
+		type:'get',
+		success:function(data){
+			console.log(data);
+			let polarCtx = $('#chart4');
+			let polarChart = new Chart(polarCtx, {
+			    data: data,
+			    type: 'polarArea',
+			    data:{
+					labels:['간식','생활','식비','의료','쇼핑'],
+					datasets:[{
+						backgroundColor:['rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)','rgba(255, 206, 86, 1)'], // a는 투명도
+						data:[data.간식, data.생활, data.식비, data.의료, data.쇼핑] // 데이터
+					}]
+				},
+				options:{}
+			});
+			
+		}
+	})
+	
+$.ajax({
+		url:'${pageContext.request.contextPath}/totalOfCategoryByYear/'+2020,
+		type:'get',
+		success:function(data){
+			console.log(data);
+			let html=`
+				<table id="table" class="table table-striped table-bordered text-center">
+					<tr>
+						<th>연도</th>
+						<th>간식</th>
+						<th>생활</th>
+						<th>식비</th>
+						<th>의료</th>
+						<th>쇼핑</th>
+					</tr>
+					<tr>
+						<td>2020</td>
+						<td>\${data.간식}</td>
+						<td>\${data.생활}</td>
+						<td>\${data.식비}</td>
+						<td>\${data.의료}</td>
+						<td>\${data.쇼핑}</td>
+					</tr>
+				</table>
+			`;
+			$('#totalOfCategoryByYearTableResult').html(html);
+		}
+	})
+// 값 입력 후 버튼 클릭 시 보이는 차트 / 테이블
 $('#totalOfCategoryByYear').click(function(){
 	$('#chart4').remove();
 	$('#newChart').append('<canvas id="chart4"></canvas>');
 	$.ajax({
-		url:'/totalOfCategoryByYear/'+$('#year').val(),
+		url:'${pageContext.request.contextPath}/totalOfCategoryByYear/'+$('#year').val(),
 		type:'get',
 		success:function(data){
 			console.log(data);
@@ -71,7 +129,7 @@ $('#totalOfCategoryByYear').click(function(){
 
 $('#totalOfCategoryByYear').click(function(){
 	$.ajax({
-		url:'/totalOfCategoryByYear/'+$('#year').val(),
+		url:'${pageContext.request.contextPath}/totalOfCategoryByYear/'+$('#year').val(),
 		type:'get',
 		success:function(data){
 			console.log(data);

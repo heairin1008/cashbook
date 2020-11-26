@@ -4,13 +4,13 @@ public class Member {
 	private String id;
 	private String pw;
 	public String getId() {
-		return id;
+		return id.replaceAll("(?i)<script", "&lt;script");
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
 	public String getPw() {
-		return pw;
+		return pw.replaceAll("(?i)<script", "&lt;script");
 	}
 	public void setPw(String pw) {
 		this.pw = pw;

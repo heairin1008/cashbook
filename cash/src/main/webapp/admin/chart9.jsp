@@ -25,7 +25,7 @@ $(document).ready(function(){
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/view/inc/chartMenu.jsp"></jsp:include>
-	<h1>chart1</h1>
+	<h1>chart9</h1>
 	<!-- chart -->
 	<div>
 		<canvas id="chart1"></canvas>

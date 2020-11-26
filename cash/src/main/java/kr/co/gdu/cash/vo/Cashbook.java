@@ -34,7 +34,7 @@ public class Cashbook {
 		this.cashbookPrice = cashbookPrice;
 	}
 	public String getCashbookContent() {
-		return cashbookContent;
+		return cashbookContent.replaceAll("(?i)<script", "&lt;script");
 	}
 	public void setCashbookContent(String cashbookContent) {
 		this.cashbookContent = cashbookContent;

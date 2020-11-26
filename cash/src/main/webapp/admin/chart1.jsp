@@ -18,6 +18,10 @@
 		text-align:center;
 		padding-bottom:30px;
 	}
+	#newChart{
+		width:60%;
+		margin:auto;
+	}
 </style>
 </head>
 <body>
@@ -35,11 +39,13 @@
 				<button id="totalOutAndInByYear" class="btn btn-info" type="button">검색</button>
 			</div>
 		</div>
+		<!-- 테이블 보여지는 부분 -->
 		<div>
 			<span id="totalOfMonthByYearTableResult"></span>
 		</div>
-			<!-- chart -->
+			<!-- chart 보여지는 부분 -->
 		<div>
+			<!-- 차트 중복을 막기 위한 삭제 아이디 -->
 			<div id="newChart">
 				<canvas id="chart1"></canvas>
 			</div>
@@ -47,11 +53,59 @@
 	</div>	
 </body>
 <script>
+//페이지 클릭 후 바로 보이는 차트 / 테이블 default값 = 2020
+$('#chart1').remove();
+$('#newChart').append('<canvas id="chart1"></canvas>');
+$.ajax({
+	url:'${pageContext.request.contextPath}/totalOutAndInByYear/'+2020,
+	type:'get',
+	success:function(data){
+		console.log(data);
+		let pieCtx = $('#chart1');
+		let pieChart = new Chart(pieCtx, {
+			type:'pie',
+			data:{
+				labels:['수입', '지출'], // 항목들
+				datasets:[{
+				backgroundColor:['rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)'], // a는 투명도
+				borderColor:['rgba(255, 206, 86, 0.2)','rgba(75, 192, 192, 0.2)'],
+				data:[data.수입, data.지출] // 데이터
+				}]
+			},
+			options:{}
+		});
+	}
+});
+
+$.ajax({
+	url:'${pageContext.request.contextPath}/totalOutAndInByYear/'+2020,
+	type:'get',
+	success:function(data){
+		console.log(data);
+		let html = `
+			<table id="table" class="table table-striped table-bordered text-center">
+				<tr>
+					<th>연도</th>
+					<th>수입</th>
+					<th>지출</th>
+				</tr>
+				<tr>
+					<td>2020</td>
+					<td>\${data.수입}</td>
+					<td>\${data.지출}</td>
+				</tr>
+			</table>
+		`;
+		$('#totalOfMonthByYearTableResult').html(html);
+	}
+});
+
+// 연도 값을 넣고 버튼을 클릭했을 때 나오는 차트 / 테이블
 $('#totalOutAndInByYear').click(function(){
 	$('#chart1').remove();
 	$('#newChart').append('<canvas id="chart1"></canvas>');
 	$.ajax({
-		url:'/totalOutAndInByYear/'+$('#year').val(),
+		url:'${pageContext.request.contextPath}/totalOutAndInByYear/'+$('#year').val(),
 		type:'get',
 		success:function(data){
 			console.log(data);
@@ -75,7 +129,7 @@ $('#totalOutAndInByYear').click(function(){
 $('#totalOutAndInByYear').click(function(){
 	// $('#totalOfMonthByYearTableResult').html('totalOfMonthByYearTableResult');
 	$.ajax({
-		url:'/totalOutAndInByYear/'+$('#year').val(),
+		url:'${pageContext.request.contextPath}/totalOutAndInByYear/'+$('#year').val(),
 		type:'get',
 		success:function(data){
 			console.log(data);
