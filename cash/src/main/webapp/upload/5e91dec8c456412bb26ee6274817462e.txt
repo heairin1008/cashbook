@@ -1,0 +1,46 @@
+sudo apt-get update
+sudo apt-get upgrade
+
+1. ftp 설치
+ sudo apt-get install vsftpd
+
+sudo apt-get install net-tools
+netstat -lntp
+
+2. java 설치
+sudo apt-get install default-jdk
+java -version
+
+filezilla로 ftp 접속확인
+
+3. tomcat 설치
+sudo apt-get install tomcat9
+
+4. tomcat port 변경 8080 -> 80
+/etc/tomcat9/server.xml 수정
+sudo nano /var/lib/tomcat9/conf/server.xml
+8080 -> 80으로 수정
+sudo systemctl restart tomcat9
+
+4. mariadb 설치
+sudo apt-get install -y mariadb-server
+
+5. mariadb root 사용허용, 원격접속 셋팅
+
+sudo mariadb
+grant all on *.* to 'root'@'%' identified by 'java1004' with grant option;
+flush privileges;
+sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
+bind address -> 0.0.0.0으로 수정
+sudo systemctl restart mariadb
+netstat -lntp
+
+6. 호스트 heidisql에서 게스트 mariadb 접속
+
+7. 톰캣 webapps 폴더 쓰기권한 설정
+sudo chmod 777 /var/lib/tomcat9/webapps
+ls -al /var/lib/tomcat9/webapps
+
+8. 이클립스에서 test.war 파일 추출 
+추출/저장
+파일질라에서 /var/lib/tomcat9/webapps에 복사
