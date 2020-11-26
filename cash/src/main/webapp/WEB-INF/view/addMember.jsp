@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>addMember</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><!-- jQuery -->
 <script>
 $(document).ready(function(){
@@ -34,25 +35,37 @@ $(document).ready(function(){
 	});
 });
 </script>
+<style>
+	#table{
+		width:70%;
+		margin:auto;
+	}
+	div{
+		padding-bottom:20px;
+	}
+</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
-	<h1>addMember</h1>
-	<form method="post" action="/admin/addMember">
-		<table>
-			<tr>
-				<td>ID</td>
-				<td><input type="text" id="id" name="id"></td>
-			</tr>
-			<tr>
-				<td>PW</td>
-				<td><input type="password" id="pw" name="pw"></td>
-			</tr>
-			<tr>
-				<td colspan="2"><button type="submit" id="addMember">addMember</button></td>
-			</tr>
-		</table>
-		
-	</form>
+	<div id="table">
+		<div style="padding:20px 0px 20px 0px; text-align:center;" class="jumbotron">
+			<span style="font-size:36px;" class="font-weight-bold">사용자 추가</span>
+		</div>
+		<form class="form-group" method="post" action="${pageContext.request.contextPath}/admin/addMember">
+			<table class="table">
+				<tr>
+					<td>ID</td>
+					<td><input class="form-control" type="text" id="id" name="id"></td>
+				</tr>
+				<tr>
+					<td>PW</td>
+					<td><input class="form-control" type="password" id="pw" name="pw"></td>
+				</tr>
+				<tr>
+					<td colspan="2"><button class="btn btn-info" type="submit" id="addMember">추가</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
 </body>
 </html>

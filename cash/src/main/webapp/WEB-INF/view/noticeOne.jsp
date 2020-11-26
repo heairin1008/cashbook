@@ -51,9 +51,9 @@
 			</c:forEach>
 		</table>
 		<div>
-			<a class="btn btn-success" href="/admin/noticeList/1">목록</a>
-			<a class="btn btn-info" href="/admin/modifyNotice?noticeId=${noticeOne.noticeId}">수정</a>
-			<a class="btn btn-danger" href="/admin/removeNotice?noticeId=${noticeOne.noticeId}">삭제</a>
+			<a class="btn btn-success" href="${pageContext.request.contextPath}/admin/noticeList/1">목록</a>
+			<a class="btn btn-info" href="${pageContext.request.contextPath}/admin/modifyNotice?noticeId=${noticeOne.noticeId}">수정</a>
+			<a class="btn btn-danger" href="${pageContext.request.contextPath}/admin/removeNotice?noticeId=${noticeOne.noticeId}">삭제</a>
 		</div>
 		
 		<table class="table">
@@ -69,7 +69,7 @@
 						<td>${c.commentId}</td>
 						<td>${c.commentContent}</td>
 						<td>${c.commentDate}</td>
-						<td><a class="btn btn-danger" href="/admin/removeComment?noticeId=${c.noticeId}&commentId=${c.commentId}">삭제</a></td>
+						<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/admin/removeComment?noticeId=${c.noticeId}&commentId=${c.commentId}">삭제</a></td>
 					</c:if>
 				</c:forEach>
 			</tr>

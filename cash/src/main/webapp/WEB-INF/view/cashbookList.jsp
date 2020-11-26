@@ -24,7 +24,7 @@
 			<span style="font-size:36px;" class="font-weight-bold">전체 내역</span>
 		</div>
 		<div>
-		<a class="btn btn-info" href="/admin/cashbookListExcel">전체 리스트 엑셀파일 다운</a>
+		<a class="btn btn-info" href="${pageContext.request.contextPath}/admin/cashbookListExcel">전체 리스트 엑셀파일 다운</a>
 		</div>
 		<table class="table table-striped text-center">
 			<thead>
@@ -60,12 +60,20 @@
 			<c:choose>
 				<c:when test="${currentPage > 1}">
 					<li class="page-item">
-						<a class="page-link" href="/admin/cashbookList/1">처음</a>
+						<a class="page-link" href="${pageContext.request.contextPath}/admin/cashbookList/1">처음</a>
 					</li>
 					<li class="page-item">
-						<a class="page-link" href="/admin/cashbookList/${currentPage - 1}">이전</a>
+						<a class="page-link" href="${pageContext.request.contextPath}/admin/cashbookList/${currentPage - 1}">이전</a>
 					</li>
 				</c:when>
+				<c:otherwise>
+					<li class="page-item disabled">
+						<a class="page-link" href="#">처음</a>
+					</li>
+					<li class="page-item disabled">
+						<a class="page-link" href="#">이전</a>
+					</li>
+				</c:otherwise>
 			</c:choose>
 			<!-- 페이지 수 -->
 			<c:forEach var="i" begin="${navbarFirst}" end="${navbarLast}">
@@ -78,7 +86,7 @@
 						</c:when>
 						<c:otherwise>
 							<li class="page-item">
-								<a class="page-link" href="/admin/cashbookList/${i}">${i}</a>
+								<a class="page-link" href="${pageContext.request.contextPath}/admin/cashbookList/${i}">${i}</a>
 							</li>
 						</c:otherwise>
 					</c:choose>
@@ -88,10 +96,10 @@
             <c:choose>
 				<c:when test="${currentPage < lastPage}">
 					<li class="page-item">
-						<a class="page-link" href="/admin/cashbookList/${currentPage + 1}">다음</a>
+						<a class="page-link" href="${pageContext.request.contextPath}/admin/cashbookList/${currentPage + 1}">다음</a>
 					</li>
 					<li class="page-item">
-						<a class="page-link" href="/admin/cashbookList/${lastPage}">마지막</a>
+						<a class="page-link" href="${pageContext.request.contextPath}/admin/cashbookList/${lastPage}">마지막</a>
 					</li>
 				</c:when>
 			</c:choose>

@@ -24,7 +24,7 @@
 	</div>
 	<div id="table">
 		<span style="font-size:24px;" class="font-weight-bold">공지사항</span> 
-		<a class="btn btn-small btn-info" href="/admin/noticeList/1">more</a>
+		<a class="btn btn-small btn-info" href="${pageContext.request.contextPath}/admin/noticeList/1">more</a>
 	</div>
 	<div>
 		<!-- 공지 -->

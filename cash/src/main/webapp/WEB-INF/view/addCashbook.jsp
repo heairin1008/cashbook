@@ -11,7 +11,7 @@
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<h1>addCashbook</h1>
-	<form method="post" action="/admin/addCashbook">
+	<form method="post" action="${pageContext.request.contextPath}/admin/addCashbook">
 		<table border="1">
 			<tr>
 				<td>cashbook_date</td>

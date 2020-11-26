@@ -36,24 +36,24 @@
 				<c:forEach var="c" items="${noticeList}">
 					<tr>
 						<td>${c.noticeId}</td>
-						<td><a style="text-decoration:none;" href="/admin/noticeOne?noticeId=${c.noticeId}">${c.noticeTitle}</a></td>
+						<td><a style="text-decoration:none;" href="${pageContext.request.contextPath}/admin/noticeOne?noticeId=${c.noticeId}">${c.noticeTitle}</a></td>
 						<td>${c.noticeDate}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		<div style="text-align:right;">
-			<span style="padding-left:10px;"><a class="btn btn-small btn-success" href="/admin/addNotice">등록</a></span>
+			<span style="padding-left:10px;"><a class="btn btn-small btn-success" href="${pageContext.request.contextPath}/admin/addNotice">등록</a></span>
 		</div>
 		<ul class="pagination justify-content-center">
 		<!-- 처음 / 이전 버튼 -->
 			<c:choose>
 				<c:when test="${currentPage > 1}">
 					<li class="page-item">
-						<a class="page-link" href="/admin/noticeList/1">처음</a>
+						<a class="page-link" href="${pageContext.request.contextPath}/admin/noticeList/1">처음</a>
 					</li>
 					<li class="page-item">
-						<a class="page-link" href="/admin/noticeList/${currentPage - 1}">이전</a>
+						<a class="page-link" href="${pageContext.request.contextPath}/admin/noticeList/${currentPage - 1}">이전</a>
 					</li>
 				</c:when>
 				<c:otherwise>
@@ -76,7 +76,7 @@
 						</c:when>
 						<c:otherwise>
 							<li class="page-item">
-								<a class="page-link" href="/admin/noticeList/${i}">${i}</a>
+								<a class="page-link" href="${pageContext.request.contextPath}/admin/noticeList/${i}">${i}</a>
 							</li>
 						</c:otherwise>
 					</c:choose>
@@ -86,10 +86,10 @@
             <c:choose>
 				<c:when test="${currentPage < lastPage}">
 					<li class="page-item">
-						<a class="page-link" href="/admin/noticeList/${currentPage + 1}">다음</a>
+						<a class="page-link" href="${pageContext.request.contextPath}/admin/noticeList/${currentPage + 1}">다음</a>
 					</li>
 					<li class="page-item">
-						<a class="page-link" href="/admin/noticeList/${lastPage}">마지막</a>
+						<a class="page-link" href="${pageContext.request.contextPath}/admin/noticeList/${lastPage}">마지막</a>
 					</li>
 				</c:when>
 			</c:choose>

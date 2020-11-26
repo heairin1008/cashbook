@@ -7,31 +7,28 @@
 <nav class="navbar navbar-custom navbar-expand-sm bg-dark navbar-dark"> 
 	<ul class="navbar-nav">
 		<li class="nav-item active">
-			<a class="navbar-brand" href="/admin/index">Cashbook</a>
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/admin/index">Cashbook</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link"  href="/admin/index">HOME</a>
+			<a class="nav-link"  href="${pageContext.request.contextPath}/admin/index">HOME</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="/admin/cashbookByMonth/-1/-1">가계부</a>
+			<a class="nav-link" href="${pageContext.request.contextPath}/admin/cashbookByMonth/-1/-1">가계부</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="/admin/cashbookList/1">cashbook</a>
+			<a class="nav-link" href="${pageContext.request.contextPath}/admin/cashbookList/1">cashbook</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="/admin/chart1.jsp">통계자료</a>
+			<a class="nav-link" href="${pageContext.request.contextPath}/admin/chart1.jsp">통계자료</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="/admin/noticeList/1">공지사항</a>
+			<a class="nav-link" href="${pageContext.request.contextPath}/admin/noticeList/1">공지사항</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="/admin/addMember">사용자 추가</a>
+			<a class="nav-link" href="${pageContext.request.contextPath}/admin/addMember">사용자 추가</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="/admin/logout">LogOut</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="/admin/newNoticeList/1">새 공지사항</a>
+			<a class="nav-link" href="${pageContext.request.contextPath}/admin/logout">LogOut</a>
 		</li>
 	</ul>
 </nav>

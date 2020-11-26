@@ -49,7 +49,7 @@
 		<div style="padding:20px 0px 20px 0px; text-align:center;" class="jumbotron">
 			<span style="font-size:36px;" class="font-weight-bold">공지사항 수정</span>
 		</div>
-		<form id="fileuploadForm" class="form-group" method="post" action="/admin/modifyNotice/${notice.noticeId}">
+		<form id="fileuploadForm" class="form-group" method="post" action="${pageContext.request.contextPath}/admin/modifyNotice/${notice.noticeId}" enctype="multipart/form-data">
 			<table class="table">
 				<tr>
 					<td>번호</td>
@@ -70,7 +70,7 @@
 							<c:if test="${not empty nf.noticefileName}">
 								<div>
 									<a href="${pageContext.request.contextPath}/upload/${nf.noticefileName}">${nf.noticefileName}</a>
-									<a class="btn btn-sm btn-danger" href="/admin/delfile?noticeId=${nf.noticeId}&noticefileId=${nf.noticefileId}">삭제</a>
+									<a class="btn btn-sm btn-danger" href="${pageContext.request.contextPath}/admin/delfile?noticeId=${nf.noticeId}&noticefileId=${nf.noticefileId}">삭제</a>
 								</div>
 							</c:if>
 						</c:forEach>
@@ -87,7 +87,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<button class="btn btn-success" id="submitBtn" type="button">수정</button>
+						<button class="btn btn-success" type="button" id="submitBtn">수정</button>
 					</td>
 				</tr>
 			</table>

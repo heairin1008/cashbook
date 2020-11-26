@@ -53,7 +53,7 @@
 		<div style="padding:20px 0px 20px 0px; text-align:center;" class="jumbotron">
 			<span style="font-size:36px;" class="font-weight-bold">공지사항 입력</span>
 		</div>
-		<form id="fileuploadForm" class="form-group" method="post" action="/admin/addNotice" enctype="multipart/form-data">
+		<form id="fileuploadForm" class="form-group" method="post" action="${pageContext.request.contextPath}/admin/addNotice" enctype="multipart/form-data">
 			<table id="table" class="table text-center">
 				<tr>
 					<td><span class="font-weight-bold">제목</span></td>

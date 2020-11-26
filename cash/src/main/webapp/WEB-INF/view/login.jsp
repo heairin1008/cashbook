@@ -24,7 +24,7 @@
 	<div style="margin-top:100px;"></div>
 	<h1 class="text-center">Login</h1>
 	<div id="login" class="form-group">
-	<form method="post" action="/login">
+	<form method="post" action="${pageContext.request.contextPath}/login">
 		<table id="login">
 			<tr>
 				<td><input class="form-control" type="text" name="id" placeholder="ID"></td>

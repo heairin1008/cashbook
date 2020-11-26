@@ -27,7 +27,7 @@ import kr.co.gdu.cash.vo.Noticefile;
 @Transactional
 public class NoticeService {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	private final String PATH = "C:\\sts\\cashbook\\maven.1606266110538\\cash\\src\\main\\webapp\\upload\\";
+	private final String PATH = "D:\\sts-work\\cashbook\\maven.1606350346601\\cash\\src\\main\\webapp\\upload\\";
 	@Autowired private NoticeMapper noticeMapper;
 	@Autowired private CashbookMapper cashbookMapper;
 	@Autowired private NoticefileMapper noticefileMapper;
@@ -85,7 +85,7 @@ public class NoticeService {
 				System.out.println("for문:"+nf);
 				
 				try {
-					mf.transferTo(new File(PATH+filename+ext));
+					mf.transferTo(new File(PATH+filename));
 				} catch(Exception e) {
 					e.printStackTrace();
 					throw new RuntimeException();
