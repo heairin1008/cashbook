@@ -65,20 +65,18 @@
 			</tr>
 			<tr>
 				<c:forEach var="c" items="${noticeOne.commentList}">
-					<c:if test="${!empty c.commentContent}">
 						<td>${c.commentId}</td>
-						<td>${c.commentContent}</td>
+						<td><c:out value="${c.commentContent}" escapeXml="false" /></td>
 						<td>${c.commentDate}</td>
 						<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/admin/removeComment?noticeId=${c.noticeId}&commentId=${c.commentId}">삭제</a></td>
-					</c:if>
 				</c:forEach>
 			</tr>
 		</table>
 		
-		<form action="/admin/addComment" method="post">
+		<form action="${pageContext.request.contextPath}/admin/addComment" method="post">
 			<input type="hidden" name="noticeId" value="${noticeOne.noticeId}">
 			<div style="text-align:right;">
-				<textarea class="form-control" rows="5" cols="50" name="commentContent">댓글을 입력해주세요</textarea>
+				<textarea class="form-control" rows="5" cols="50" name="commentContent" placeholder="댓글을 입력해주세요"></textarea>
 				<button style="margin-top:5px;" type="submit" class="btn btn-info">등록</button>
 			</div>
 		</form>

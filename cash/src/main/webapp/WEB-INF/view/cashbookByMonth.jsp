@@ -78,10 +78,10 @@
 									<c:if test="${i-(firstDayOfWeek-1) == c.dday}">
 										<div>
 											<c:if test="${c.cashbookKind == '수입'}">
-												<div>수입 : ${c.cashbookPrice}</div>
+												<div style="color:blue;">수입 : ${c.cashbookPrice}</div>
 											</c:if>
 											<c:if test="${c.cashbookKind == '지출'}">
-												<div>지출 : ${c.cashbookPrice}</div>
+												<div style="color:red;">지출 : ${c.cashbookPrice}</div>
 											</c:if>
 										</div>
 									</c:if>

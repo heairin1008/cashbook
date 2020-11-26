@@ -5,5 +5,21 @@
 		DELETE FROM comment
 		WHERE notice_id = #{noticeId}
 	</delete>
-
+	
+	<insert id="insertComment" parameterType="kr.co.gdu.cash.vo.Comment">
+		INSERT INTO comment(
+			notice_id,
+			comment_content,
+			comment_date
+		) VALUES(
+			#{noticeId},
+			#{commentContent},
+			NOW()
+		)
+	</insert>
+	
+	<delete id="removeComment" parameterType="int">
+		DELETE FROM comment
+		WHERE comment_id = #{commentId}
+	</delete>
 </mapper>
