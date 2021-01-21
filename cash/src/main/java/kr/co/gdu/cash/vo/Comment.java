@@ -18,7 +18,7 @@ public class Comment {
 		this.noticeId = noticeId;
 	}
 	public String getCommentContent() {
-		return commentContent.replaceAll("(?i)<script", "&lt;script");
+		return commentContent;
 	}
 	public void setCommentContent(String commentContent) {
 		this.commentContent = commentContent;

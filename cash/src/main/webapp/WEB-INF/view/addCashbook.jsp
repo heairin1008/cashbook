@@ -26,20 +26,20 @@
 		<form class="form-group" method="post" action="${pageContext.request.contextPath}/admin/addCashbook">
 			<table class="table">
 				<tr>
-					<td>cashbook_date</td>
+					<td>날짜</td>
 					<td>
 						<input class="form-control" type="text" name="cashbookDate" value="${currentYear}-${currentMonth}-${currentDay} " readonly="readonly">
 					</td>
 				</tr>
 				<tr>
-					<td>cashbook_kind</td>
+					<td>수입 / 지출</td>
 					<td>
 						<input type="radio" name="cashbookKind" value="지출">지출
 						<input type="radio" name="cashbookKind" value="수입">수입
 					</td>
 				</tr>
 				<tr>
-					<td>category_name</td>
+					<td>카테고리</td>
 					<td>
 						<select style="width:100px;" class="form-control" name="categoryName">
 							<c:forEach var="c" items="${categoryList}">
@@ -49,13 +49,13 @@
 					</td>
 				</tr>
 				<tr>
-					<td>cashbook_price</td>
+					<td>금액</td>
 					<td>
 						<input class="form-control" type="text" name="cashbookPrice">
 					</td>
 				</tr>
 				<tr>
-					<td>cashbook_content</td>
+					<td>내용</td>
 					<td>
 						<textarea class="form-control" rows="5" cols="50" name="cashbookContent"></textarea>
 					</td>

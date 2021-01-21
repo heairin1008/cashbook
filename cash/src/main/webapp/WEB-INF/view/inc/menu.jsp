@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style type="text/css">
 	li{font-size:17px;}
@@ -7,7 +9,7 @@
 <nav class="navbar navbar-custom navbar-expand-sm bg-dark navbar-dark"> 
 	<ul class="navbar-nav">
 		<li class="nav-item active">
-			<a class="navbar-brand" href="${pageContext.request.contextPath}/admin/index">Cashbook</a>
+			<a class="navbar-brand" href="" style="font-family: 'Kalam', cursive;">Cashbook</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link"  href="${pageContext.request.contextPath}/admin/index">HOME</a>

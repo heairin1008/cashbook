@@ -29,20 +29,18 @@
 		<table class="table table-striped text-center">
 			<thead>
 				<tr>
-					<th>cashbook_id</th>
-					<th>cashbook_kind</th>
-					<th>category_name</th>
-					<th>cashbook_price</th>
-					<th>cashbook_content</th>
-					<th>cashbook_date</th>
-					<th>create_date</th>
-					<th>update_date</th>
+					<th>수입 / 지출</th>
+					<th>카테고리</th>
+					<th>금액</th>
+					<th>내용</th>
+					<th>날짜</th>
+					<th>등록일</th>
+					<th>수정일</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="c" items="${cashbookList}">
 					<tr>
-						<td>${c.cashbookId}</td>
 						<td>${c.cashbookKind}</td>
 						<td>${c.categoryName}</td>
 						<td>${c.cashbookPrice}</td>

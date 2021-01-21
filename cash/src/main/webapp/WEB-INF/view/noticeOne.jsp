@@ -65,10 +65,15 @@
 			</tr>
 			<tr>
 				<c:forEach var="c" items="${noticeOne.commentList}">
+					<c:if test="${c.commentContent != null}">
 						<td>${c.commentId}</td>
 						<td><c:out value="${c.commentContent}" escapeXml="false" /></td>
 						<td>${c.commentDate}</td>
 						<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/admin/removeComment?noticeId=${c.noticeId}&commentId=${c.commentId}">삭제</a></td>
+					</c:if>
+					<c:if test="${c.commentContent == null}">
+						<td colspan="4">등록된 댓글이 없습니다.</td>
+					</c:if>
 				</c:forEach>
 			</tr>
 		</table>

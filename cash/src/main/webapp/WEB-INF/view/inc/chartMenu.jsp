@@ -29,13 +29,4 @@
 	<li class="nav-item">
 		<a class="nav-link text-info" href="${pageContext.request.contextPath}/admin/chart6.jsp">연도별 월 수입 / 지출 합계</a>
 	</li>
-	<li class="nav-item">
-		<a class="nav-link text-info" href="${pageContext.request.contextPath}/admin/chart7.jsp">chart7</a>
-	</li>
-	<li class="nav-item">
-		<a class="nav-link text-info" href="${pageContext.request.contextPath}/admin/chart8.jsp">chart8</a>
-	</li>
-	<li class="nav-item">
-		<a class="nav-link text-info" href="${pageContext.request.contextPath}/admin/chart9.jsp">chart9</a>
-	</li>
 </ul>

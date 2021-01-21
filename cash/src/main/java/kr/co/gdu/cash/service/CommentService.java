@@ -13,7 +13,10 @@ public class CommentService {
 	@Autowired private CommentMapper commentMapper;
 	
 	public int addComment(Comment comment) {
-		return commentMapper.insertComment(comment);
+		Comment co = new Comment();
+	    co.setCommentContent(comment.getCommentContent().replaceAll("(?i)<script", "&lt;script"));
+	    co.setNoticeId(comment.getNoticeId());
+		return commentMapper.insertComment(co);
 	}
 	
 	public int removeComment(int commentId) {

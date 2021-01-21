@@ -31,7 +31,7 @@
 			</h3>
 		</div>
 		<a style="margin-bottom:5px;" class="btn btn-sm btn-info font-weight-bold" href = "${pageContext.request.contextPath}/admin/addCashbook/now/${currentYear}/${currentMonth}/${currentDay}">수입/지출 입력</a>
-		<table class="table table-bordered text-center">
+		<table class="table table-border text-center">
 			<thead>
 				<tr>
 					<th>번호</th>
@@ -44,6 +44,7 @@
 				</tr>
 			</thead>
 			<tbody>
+				<c:if test="${!empty cashbookList}">
 				<c:forEach var="c" items="${cashbookList}">
 					<tr>	
 						<td>${c.cashbookId}</td>
@@ -55,6 +56,12 @@
 						<td><a href="${pageContext.request.contextPath}/admin/deleteCashbook/${c.cashbookId}/${currentYear}/${currentMonth}/${currentDay}">삭제</a></td>
 					</tr>
 				</c:forEach>
+				</c:if>
+				<c:if test="${empty cashbookList}">
+					<tr>
+						<td colspan="7">내역이 없습니다.</td>
+					</tr>
+				</c:if>
 			</tbody>
 		</table>
 	</div>
