@@ -41,9 +41,9 @@
 	<div style="padding-bottom:10px;"></div>
 	<!-- 다이어리 -->
 	<h3 class="text-center font-weight-bold">
-		<a class="text-info" href="${pageContext.request.contextPath}/admin/cashbookByMonth/${currentYear}/${currentMonth-1}">[이전달]</a>
+		<a style="text-decoration:none;" class="text-info" href="${pageContext.request.contextPath}/admin/cashbookByMonth/${currentYear}/${currentMonth-1}">[이전달]</a>
 		${currentYear}년 ${currentMonth} 월
-		<a class="text-info" href="${pageContext.request.contextPath}/admin/cashbookByMonth/${currentYear}/${currentMonth+1}">[다음달]</a>
+		<a style="text-decoration:none;" class="text-info" href="${pageContext.request.contextPath}/admin/cashbookByMonth/${currentYear}/${currentMonth+1}">[다음달]</a>
 	</h3>
 	<div id="sumIn" class="font-weight-bold">
 		이번달 수입 합계 : ${sumIn}
@@ -73,7 +73,7 @@
 						<c:if test="${i-(firstDayOfWeek-1) >0 }">
 							<td>
 								<!--  <div><a href="/admin/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i-(firstDayOfWeek-1)}">${i-(firstDayOfWeek-1)}</a></div>-->
-								<div><a href="${pageContext.request.contextPath}/admin/cashbookByDay/now/${currentYear}/${currentMonth}/${i-(firstDayOfWeek-1)}">${i-(firstDayOfWeek-1)}</a></div>
+								<div><a class="btn-block" style="text-decoration:none;" href="${pageContext.request.contextPath}/admin/cashbookByDay/now/${currentYear}/${currentMonth}/${i-(firstDayOfWeek-1)}">${i-(firstDayOfWeek-1)}</a></div>
 								<c:forEach var="c" items="${cashList}">
 									<c:if test="${i-(firstDayOfWeek-1) == c.dday}">
 										<div>

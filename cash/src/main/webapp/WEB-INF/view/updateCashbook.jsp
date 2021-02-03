@@ -23,7 +23,7 @@
 		<div style="padding:20px 0px 20px 0px; text-align:center;" class="jumbotron">
 			<span style="font-size:36px;" class="font-weight-bold">가계부 수정</span>
 		</div>
-		<form class="form-group" method="post" action="${pageContext.request.contextPath}/admin/updateCashbook/${cashbookId}/${currentYear}/${currentMonth}/${currentDay}">
+		<form id="cashForm" class="form-group" method="post" action="${pageContext.request.contextPath}/admin/updateCashbook/${cashbookId}/${currentYear}/${currentMonth}/${currentDay}">
 		<table class="table">
 			<tr>
 				<td>cashbook_id</td>
@@ -59,11 +59,17 @@
 			</tr>
 			<tr>
 				<td>cashbook_price</td>
-				<td><input class="form-control" type="text" name="cashbookPrice" value="${cashbook.cashbookPrice}"></td>
+				<td>
+					<input class="form-control" type="text" name="cashbookPrice" id="cashbookPrice" value="${cashbook.cashbookPrice}">
+					<div id="checkPrice" style="color:blue; margin-top:10px;"></div>
+				</td>
 			</tr>
 			<tr>
 				<td>cashbook_content</td>
-				<td><textarea class="form-control" rows="5" cols="50" name="cashbookContent">${cashbook.cashbookContent}</textarea></td>
+				<td>
+					<textarea class="form-control" rows="5" cols="50" name="cashbookContent" id="cashbookContent">${cashbook.cashbookContent}</textarea>
+					<div id="checkContent" style="color:blue; margin-top:10px;"></div>
+				</td>
 			</tr>
 			<tr>
 				<td>cashbook_date</td>
@@ -72,8 +78,45 @@
 				</td>
 			</tr>
 		</table>
-		<div><button class="btn btn-info" type="submit">수정</button></div>
+		<div><button class="btn btn-info" id="updateBtn" type="button">수정</button></div>
 		</form>
 	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		var price = 'success';
+		var content = 'success';
+		
+		var checkPrice = /^[0-9]*$/;
+		
+		// 금액 입력했는지 확인
+		$('#cashbookPrice').on('propertychange change keyup paste input', function(){
+			if(!checkPrice.test($('#cashbookPrice').val() || $('#cashbookPrice').val() == "")){
+				$('#checkPrice').text('금액을 입력하세요.');
+				price = '';
+			}else{
+				$('#checkPrice').text('');
+				price = 'success';
+			}
+		});
+		
+		// 내용 입력했는지 확인
+		$('#cashbookContent').on('propertychange change keyup paste input', function(){
+			if($('#cashbookContent').val() == ""){
+				$('#checkContent').text('내용을 입력하세요.');
+				content = '';
+			}else{
+				$('#checkContent').text('');
+				content = 'success';
+			}
+		});
+		
+		$('#updateBtn').click(function(){
+			if(price == 'success' && content == 'success'){
+				$('#cashForm').submit();
+			}else{
+				alert('빈칸을 입력해주세요.');
+			}
+		});
+	</script>
 </body>
 </html>

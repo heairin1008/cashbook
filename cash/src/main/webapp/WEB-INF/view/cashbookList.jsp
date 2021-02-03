@@ -100,6 +100,14 @@
 						<a class="page-link" href="${pageContext.request.contextPath}/admin/cashbookList/${lastPage}">마지막</a>
 					</li>
 				</c:when>
+				<c:otherwise>
+					<li class="page-item disabled">
+						<a class="page-link" href="#">다음</a>
+					</li>
+					<li class="page-item disabled">
+						<a class="page-link" href="#">마지막</a>
+					</li>
+				</c:otherwise>
 			</c:choose>
 		</ul>
 	</div>

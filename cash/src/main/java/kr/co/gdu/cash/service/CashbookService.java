@@ -17,7 +17,15 @@ public class CashbookService {
 	@Autowired private CashbookMapper cashbookMapper;
 	
 	public int addCashbook(Cashbook cashbook) {
-		return cashbookMapper.insertCashbook(cashbook);
+		Cashbook cash = new Cashbook();
+		// 스크립트 방지를 위해 새로운 vo에 입력
+		cash.setCashbookKind(cashbook.getCashbookKind());
+		cash.setCategoryName(cashbook.getCategoryName());
+		cash.setCashbookPrice(cashbook.getCashbookPrice());
+		cash.setCashbookContent(cashbook.getCashbookContent().replaceAll("(?i)<script", "&lt;script"));
+		cash.setCashbookDate(cashbook.getCashbookDate());
+		
+		return cashbookMapper.insertCashbook(cash);
 	}
 	
 	public List<Cashbook> getCashbookListByDay(int currentYear, int currentMonth, int currentDay){

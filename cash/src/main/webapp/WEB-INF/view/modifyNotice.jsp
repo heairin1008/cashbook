@@ -10,14 +10,41 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 	$(document).ready(function(){
+		var title = 'success';
+		var content = 'success';
+		
+		// 제목 입력했는지 확인
+		$('#noticeTitle').on('propertychange change keyup paste input', function(){
+			if($('#noticeTitle').val() == ""){
+				$('#checkTitle').text('제목을 입력해주세요.');
+				title = '';
+			}else{
+				$('#checkTitle').text('');
+				title = 'success';
+			}
+		});
+		
+		// 내용 입력했는지 확인
+		$('#noticeContent').on('propertychange change keyup paste input', function(){
+			if($('#noticeContent').val() == ""){
+				$('#checkContent').text('내용을 입력해주세요.');
+				content = '';
+			}else{
+				$('#checkContent').text('');
+				content = 'success';
+			}
+		});
+		
 		$('#addBtn').click(function(){
 			//alert('test');
 			let html = '<div><input type="file" name="noticefile" class="noticefile form-control"></div>';
 			$('#fileinput').append(html);
 		});
+		
 		$('#delBtn').click(function(){
 			$('#fileinput').children().last().remove();
 		});		
+		
 		$('#submitBtn').click(function(){
 			let ck = true;
 			$('.noticefile').each(function(index,item){
@@ -28,7 +55,11 @@
 				if(ck==false){
 					alert('선택하지 않은 파일이 있습니다.');
 				}else{
-					$('#fileuploadForm').submit();
+					if(title == 'success' && content == 'success'){
+						$('#fileuploadForm').submit();
+					}else{
+						alert('빈칸을 입력해주세요.');
+					}
 				}
 		});
 	});
@@ -57,11 +88,17 @@
 				</tr>
 				<tr>
 					<td>제목</td>
-					<td><input class="form-control" type="text" name="noticeTitle" id="noticeTitle" value="${noticeOne.noticeTitle}"></td>
+					<td>
+						<input class="form-control" type="text" name="noticeTitle" id="noticeTitle" value="${noticeOne.noticeTitle}">
+						<div id="checkTitle" style="color:blue; margin-top:10px;"></div>
+					</td>
 				</tr>
 				<tr>
 					<td>내용</td>
-					<td><textarea class="form-control" rows="5" cols="50" name="noticeContent" id="noticeContent">${noticeOne.noticeContent}</textarea></td>
+					<td>
+						<textarea class="form-control" rows="5" cols="50" name="noticeContent" id="noticeContent">${noticeOne.noticeContent}</textarea>
+						<div id="checkContent" style="color:blue; margin-top:10px;"></div>
+					</td>
 				</tr>
 				<tr>
 					<td>기존 파일</td>

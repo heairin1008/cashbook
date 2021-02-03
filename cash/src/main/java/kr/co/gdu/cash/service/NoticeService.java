@@ -27,7 +27,7 @@ import kr.co.gdu.cash.vo.Noticefile;
 @Transactional
 public class NoticeService {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	private final String PATH = "D:\\sts-work\\cashbook\\maven.1606350346601\\cash\\src\\main\\webapp\\upload\\";
+	private static String OS = System.getProperty("os.name").toLowerCase();
 	@Autowired private NoticeMapper noticeMapper;
 	@Autowired private CashbookMapper cashbookMapper;
 	@Autowired private NoticefileMapper noticefileMapper;
@@ -84,8 +84,26 @@ public class NoticeService {
 				logger.debug("for문:"+nf);
 				System.out.println("for문:"+nf);
 				
+				// 업로드 경로 or spring에서 쓰는 경로
+				// 서버파일의 상대경로 선언
+				String rootPath = "";
+				
+				String attachPath = "";
+				
+				if ( OS.indexOf("nux") >= 0) { // 서버파일 경로일 경우
+		        	rootPath = "/var/lib/tomcat9/webapps/cash/";
+		        	attachPath = "upload/";
+		        } else { // spring 경로일 경우
+		            File file = new File("");
+		            rootPath =  file.getAbsolutePath() + "\\src\\main\\webapp\\";
+		            attachPath = "upload\\";
+		        }
+				
+				
+				File f = new File(rootPath + attachPath + filename + ext);
+				
 				try {
-					mf.transferTo(new File(PATH+filename));
+					mf.transferTo(f);
 				} catch(Exception e) {
 					e.printStackTrace();
 					throw new RuntimeException();
@@ -129,8 +147,26 @@ public class NoticeService {
 				logger.debug("for문:"+nf);
 				System.out.println("for문:"+nf);
 				
+				// 업로드 경로 or spring에서 쓰는 경로
+				// 서버파일의 상대경로 선언
+				String rootPath = "";
+				
+				String attachPath = "";
+				
+				if ( OS.indexOf("nux") >= 0) { // 서버파일 경로일 경우
+		        	rootPath = "/var/lib/tomcat9/webapps/cash/";
+		        	attachPath = "upload/";
+		        } else { // spring 경로일 경우
+		            File file = new File("");
+		            rootPath =  file.getAbsolutePath() + "\\src\\main\\webapp\\";
+		            attachPath = "upload\\";
+		        }
+				
+				
+				File f = new File(rootPath + attachPath + filename + ext);
+				
 				try {
-					mf.transferTo(new File(PATH+filename+ext));
+					mf.transferTo(f);
 				} catch(Exception e) {
 					e.printStackTrace();
 					throw new RuntimeException();
@@ -154,8 +190,22 @@ public class NoticeService {
 		System.out.println(noticeId);
 		List<String> noticefileNameList = noticefileMapper.selectNoticefileNameList(noticeId);
 		System.out.println(noticeId);
+		
+		String rootPath = "";
+		
+		String attachPath = "";
+		
+		if ( OS.indexOf("nux") >= 0) {
+        	rootPath = "/var/lib/tomcat9/webapps/cash/";
+        	attachPath = "upload/";
+        } else {
+            File file = new File("");
+            rootPath =  file.getAbsolutePath() + "\\src\\main\\webapp\\";
+            attachPath = "upload\\";
+        }
+		
 		for(String s : noticefileNameList) {
-			File file = new File(PATH+s);
+			File file = new File(rootPath+attachPath+s);
 			if(file.exists()) {
 				file.delete();
 			}

@@ -52,8 +52,8 @@
 						<td>${c.categoryName}</td>
 						<td>${c.cashbookPrice}</td>
 						<td>${c.cashbookContent}</td>
-						<td><a href="${pageContext.request.contextPath}/admin/updateCashbook/${c.cashbookId}/${currentYear}/${currentMonth}/${currentDay}">수정</a></td>
-						<td><a href="${pageContext.request.contextPath}/admin/deleteCashbook/${c.cashbookId}/${currentYear}/${currentMonth}/${currentDay}">삭제</a></td>
+						<td><a class="btn btn-outline-info" href="${pageContext.request.contextPath}/admin/updateCashbook/${c.cashbookId}/${currentYear}/${currentMonth}/${currentDay}">수정</a></td>
+						<td><a class="btn btn-outline-danger" href="${pageContext.request.contextPath}/admin/deleteCashbook/${c.cashbookId}/${currentYear}/${currentMonth}/${currentDay}">삭제</a></td>
 					</tr>
 				</c:forEach>
 				</c:if>

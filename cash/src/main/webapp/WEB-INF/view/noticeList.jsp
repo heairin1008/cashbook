@@ -36,7 +36,7 @@
 				<c:forEach var="c" items="${noticeList}">
 					<tr>
 						<td>${c.noticeId}</td>
-						<td><a style="text-decoration:none;" href="${pageContext.request.contextPath}/admin/noticeOne?noticeId=${c.noticeId}">${c.noticeTitle}</a></td>
+						<td><a class="btn-block" style="text-decoration:none;" href="${pageContext.request.contextPath}/admin/noticeOne?noticeId=${c.noticeId}">${c.noticeTitle}</a></td>
 						<td>${c.noticeDate}</td>
 					</tr>
 				</c:forEach>
@@ -92,6 +92,14 @@
 						<a class="page-link" href="${pageContext.request.contextPath}/admin/noticeList/${lastPage}">마지막</a>
 					</li>
 				</c:when>
+				<c:otherwise>
+					<li class="page-item disabled">
+						<a class="page-link" href="#">다음</a>
+					</li>
+					<li class="page-item disabled">
+						<a class="page-link" href="#">마지막</a>
+					</li>
+				</c:otherwise>
 			</c:choose>
 		</ul>
 	</div>
